@@ -1,0 +1,78 @@
+{% load static %}
+<!-- Product Detail Content -->
+<div class="bg-white p-6 shadow-sm border border-gray-100">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <!-- Image Section -->
+        <div class="space-y-4">
+            <div class="aspect-square bg-gray-50 border border-gray-200 overflow-hidden relative group">
+                {% if product.images.first %}
+                <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}"
+                    class="w-full h-full object-contain" />
+                {% else %}
+                <img src="https://placehold.co/600x600?text=No+Image" alt="No Image"
+                    class="w-full h-full object-contain" />
+                {% endif %}
+                <div class="absolute top-4 left-4 flex flex-col gap-2">
+                    {% if product.discount_price %}
+                    <span class="bg-red-600 text-white text-xs font-bold uppercase px-3 py-1">Sale</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div>
+            <div class="mb-6">
+                <div class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">{{
+                    product.brand|default:"Unknown Brand" }}</div>
+                <h1 class="text-3xl font-black uppercase tracking-tight mb-2">{{ product.name }}</h1>
+                <div class="text-[10px] text-gray-400 mb-4">Product code: {{ product.sku|default:product.id }}</div>
+
+                <div class="flex items-baseline space-x-4 mb-6">
+                    <span class="text-4xl font-black">{{ product.price }} €</span>
+                    {% if product.discount_price %}
+                    <span class="text-xl text-red-600 line-through">{{ product.discount_price }} €</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Add to Cart -->
+            <div class="flex gap-4 mb-8">
+                <button hx-post="{% url 'cart_add' product.id %}" hx-target="#cart-modal-container" hx-swap="innerHTML"
+                    class="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-black text-lg uppercase tracking-widest h-14 flex items-center justify-center space-x-3 transition-colors">
+                    <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                    <span>Add to basket</span>
+                </button>
+            </div>
+
+            <!-- Specs -->
+            <div class="border-t border-b border-gray-100 py-6 mb-8">
+                <h3 class="font-black text-sm uppercase mb-4">Specifications</h3>
+                <div class="grid grid-cols-2 gap-y-2 text-xs">
+                    <div class="text-gray-500">Power Source:</div>
+                    <div class="font-bold">{{ product.power_supply|default:"-" }}</div>
+
+                    <div class="text-gray-500">FPS:</div>
+                    <div class="font-bold">{{ product.muzzle_velocity_fps|default:"-" }}</div>
+
+                    <div class="text-gray-500">Material:</div>
+                    <div class="font-bold">{{ product.material|default:"-" }}</div>
+
+                    <div class="text-gray-500">Color:</div>
+                    <div class="font-bold">{{ product.color|default:"-" }}</div>
+
+                    <div class="text-gray-500">Weight:</div>
+                    <div class="font-bold">{{ product.weight_g|default:"-" }} g</div>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div>
+                <h3 class="font-black text-sm uppercase mb-4">Description</h3>
+                <div class="text-sm text-gray-600 leading-relaxed">
+                    {{ product.description|linebreaks }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

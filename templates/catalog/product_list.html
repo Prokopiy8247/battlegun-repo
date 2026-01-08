@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="page-category" class="page-section">
+    <div class="bg-white min-h-screen">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-[10px] text-gray-500 mb-8 flex items-center space-x-2">
+                <span>Airsoft replicas</span>
+                <span>»</span>
+                <span class="text-black font-bold">All Products</span>
+            </div>
+
+            <div class="grid grid-cols-12 gap-8">
+                <!-- Sidebar -->
+                <aside class="col-span-12 lg:col-span-3">
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-xl font-black uppercase mb-4 tracking-tight">Power supply</h3>
+                            <div class="space-y-3">
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
+                                    <span class="text-xs text-gray-600 group-hover:text-black">Gas</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
+                                    <span class="text-xs text-gray-600 group-hover:text-black">AEG</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-black uppercase mb-4 tracking-tight">Manufacturer</h3>
+                            <div class="space-y-3">
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
+                                    <span class="text-xs text-gray-600 group-hover:text-black">Specna Arms</span>
+                                </label>
+                                <label class="flex items-center space-x-3 cursor-pointer group">
+                                    <input type="checkbox"
+                                        class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
+                                    <span class="text-xs text-gray-600 group-hover:text-black">E&C</span>
+                                </label>
+                            </div>
+                            <button
+                                class="mt-4 bg-[#2a2a2a] text-white text-[10px] font-bold uppercase tracking-widest px-6 py-2">Show
+                                all</button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Listing -->
+                <main class="col-span-12 lg:col-span-9">
+
+                    <div class="mb-8">
+                        <h1 class="text-3xl font-black uppercase tracking-tighter mb-4">Catalog</h1>
+                        <p class="text-xs text-gray-500 leading-relaxed max-w-4xl">
+                            <span class="font-bold text-black uppercase">Airsoft Guns</span> in this catalog include
+                            replicas of pistols, rifles, sniper rifles, shotguns and more.
+                        </p>
+                    </div>
+
+                    <!-- Grid -->
+                    <div id="category-grid"
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-gray-100 mb-12">
+                        {% include "catalog/partials/product_list_content.html" %}
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

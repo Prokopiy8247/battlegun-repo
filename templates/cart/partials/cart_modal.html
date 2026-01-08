@@ -1,0 +1,80 @@
+<!-- Cart Modal -->
+<div class="fixed inset-0 z-[100] flex justify-end" x-data="{ open: true }" x-show="open" style="display: none;">
+    <!-- x-show handles display -->
+
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
+        x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200"
+        x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+        @click="document.getElementById('cart-modal-container').innerHTML = ''">
+    </div>
+
+    <!-- Drawer -->
+    <div class="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col transform transition-transform"
+        x-transition:enter="ease-out duration-300" x-transition:enter-start="translate-x-full"
+        x-transition:enter-end="translate-x-0" x-transition:leave="ease-in duration-200"
+        x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full">
+
+        <!-- Header -->
+        <div class="flex items-center justify-between p-6 border-b border-gray-100">
+            <h2 class="text-xl font-black uppercase tracking-tight">Shopping Cart</h2>
+            <button @click="document.getElementById('cart-modal-container').innerHTML = ''"
+                class="text-gray-400 hover:text-black p-2">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Items -->
+        <div class="flex-1 overflow-y-auto p-6 scrollbar-thin">
+            {% if cart_items %}
+            <div class="space-y-6">
+                {% for item in cart_items %}
+                <div class="flex gap-4 border-b border-gray-50 pb-4 last:border-0">
+                    <div class="w-20 h-20 bg-gray-50 flex-shrink-0 border border-gray-100">
+                        {% if item.product.images.first %}
+                        <img src="{{ item.product.images.first.image.url }}" class="w-full h-full object-contain">
+                        {% else %}
+                        <img src="https://placehold.co/100x100?text=No+Img" class="w-full h-full object-contain">
+                        {% endif %}
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xs font-bold leading-tight mb-1">{{ item.product.name }}</h3>
+                        <div class="text-[10px] text-gray-500 mb-2">{{ item.product.brand }}</div>
+                        <div class="flex items-center justify-between">
+                            <div class="font-black">{{ item.total_price }} €</div>
+                            <!-- Quantity Controls (simplified for now) -->
+                            <div class="text-xs text-gray-500">Qty: {{ item.quantity }}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="h-full flex flex-col items-center justify-center text-center text-gray-400">
+                <i data-lucide="shopping-bag" class="w-16 h-16 mb-4 opacity-20"></i>
+                <p class="uppercase font-bold text-sm">Your cart is empty</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Footer -->
+        <div class="border-t border-gray-100 p-6 bg-gray-50">
+            <div class="flex justify-between items-end mb-4">
+                <span class="text-xs font-bold uppercase text-gray-500">Total</span>
+                <span class="text-2xl font-black">{{ cart_total }} €</span>
+            </div>
+            <button
+                class="w-full bg-orange-600 hover:bg-orange-700 text-white font-black uppercase tracking-widest py-4 transition-colors">
+                Checkout
+            </button>
+        </div>
+    </div>
+</div>
+<script>
+    // Re-init alpine component or icons if needed
+    lucide.createIcons();
+    // Simulate Alpine init since it's injected
+    // Alpine.initTree(document.getElementById('cart-modal-container'));
+    // Actually Alpine observes DOM, so it should auto-init x-data.
+</script>
