@@ -1,15 +1,21 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template.response import TemplateResponse
-from .models import Product
+from .models import Product, Category
 
 def is_htmx(request):
     return request.headers.get('HX-Request') == 'true'
 
-def product_list(request):
+def product_list(request, category_slug=None):
     products = Product.objects.filter(is_active=True).order_by('-created_at')
+    current_category = None
     
+    if category_slug:
+        current_category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=current_category)
+
     context = {
         'products': products,
+        'current_category': current_category,
     }
 
     if is_htmx(request):

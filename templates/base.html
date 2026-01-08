@@ -161,21 +161,13 @@
                 <div class="container mx-auto px-4">
                     <nav
                         class="flex items-center justify-center space-x-6 text-[11px] font-bold uppercase tracking-wider h-10">
-                        <a href="#" hx-get="{% url 'product_list' %}" hx-target="#main-content" hx-push-url="true"
-                            class="text-white hover:text-orange-500 flex items-center">Airsoft replicas <i
-                                data-lucide="chevron-down" class="ml-1 w-2.5 h-2.5"></i></a>
-                        <a href="#" class="text-white hover:text-orange-500 flex items-center">Parts and accessories <i
-                                data-lucide="chevron-down" class="ml-1 w-2.5 h-2.5"></i></a>
-                        <a href="#" class="text-white hover:text-orange-500 flex items-center">Internal parts <i
-                                data-lucide="chevron-down" class="ml-1 w-2.5 h-2.5"></i></a>
-                        <a href="#" class="text-white hover:text-orange-500 flex items-center">Tactical equipment <i
-                                data-lucide="chevron-down" class="ml-1 w-2.5 h-2.5"></i></a>
-                        <a href="#" class="text-white hover:text-orange-500">New products</a>
-                        <a href="#" class="text-white hover:text-orange-500">Bestsellers</a>
-                        <a href="#" class="text-white hover:text-orange-500">Producers</a>
-                        <a href="#" class="text-white hover:text-orange-500">Technical support</a>
-                        <a href="#" class="text-white hover:text-orange-500">Outlet</a>
-                        <div class="h-4 w-px bg-gray-700 mx-2"></div>
+                        {% for category in categories %}
+                        <a href="#" hx-get="{% url 'product_list_by_category' category.slug %}"
+                            hx-target="#main-content" hx-push-url="true"
+                            class="text-white hover:text-orange-500 flex items-center transition-colors">
+                            {{ category.name }}
+                        </a>
+                        {% endfor %}
                     </nav>
                 </div>
             </div>

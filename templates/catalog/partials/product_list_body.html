@@ -4,10 +4,13 @@
             <div class="text-[10px] text-gray-500 mb-8 flex items-center space-x-2">
                 <span>Airsoft replicas</span>
                 <span>»</span>
-                <span class="text-black font-bold">All Products</span>
+                <span class="text-black font-bold">{% if current_category %}{{ current_category.name }}{% else %}All
+                    Products{% endif %}</span>
             </div>
 
             <div class="grid grid-cols-12 gap-8">
+                <!-- Sidebar omitted for brevity in replace block, assuming no changes there yet -->
+
                 <!-- Sidebar -->
                 <aside class="col-span-12 lg:col-span-3">
                     <div class="space-y-8">
@@ -51,11 +54,13 @@
                 <main class="col-span-12 lg:col-span-9">
 
                     <div class="mb-8">
-                        <h1 class="text-3xl font-black uppercase tracking-tighter mb-4">Catalog</h1>
-                        <p class="text-xs text-gray-500 leading-relaxed max-w-4xl">
-                            <span class="font-bold text-black uppercase">Airsoft Guns</span> in this catalog include
-                            replicas of pistols, rifles, sniper rifles, shotguns and more.
-                        </p>
+                        <h1 class="text-3xl font-black tracking-tighter mb-4">
+                            {% if current_category %}
+                            {{ current_category.name }}
+                            {% else %}
+                            All Products
+                            {% endif %}
+                        </h1>
                     </div>
 
                     <!-- Grid -->
