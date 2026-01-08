@@ -12,8 +12,12 @@ def product_list(request):
         'products': products,
     }
 
-    if is_htmx(request) and request.headers.get('HX-Target') == 'main-content':
-        return render(request, 'catalog/partials/product_list_content.html', context)
+    if is_htmx(request):
+        header_target = request.headers.get('HX-Target')
+        if header_target == 'main-content':
+             return render(request, 'catalog/partials/product_list_body.html', context)
+        elif header_target == 'category-grid':
+             return render(request, 'catalog/partials/product_list_content.html', context)
     
     return render(request, 'catalog/product_list.html', context)
 
@@ -24,7 +28,7 @@ def product_detail(request, pk):
     }
 
     if is_htmx(request) and request.headers.get('HX-Target') == 'main-content':
-        return render(request, 'catalog/partials/product_detail_content.html', context)
+        return render(request, 'catalog/partials/product_detail_body.html', context)
 
     return render(request, 'catalog/product_detail.html', context)
 

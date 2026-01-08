@@ -1,17 +1,5 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="bg-gray-50 min-h-screen py-8">
-    <div class="container mx-auto px-4">
-        <!-- Breadcrumbs -->
-        <div class="text-[10px] text-gray-500 mb-8 flex items-center space-x-2">
-            <a href="#" hx-get="{% url 'product_list' %}" hx-target="#main-content" hx-push-url="true"
-                class="hover:text-black">Catalog</a>
-            <span>»</span>
-            <span class="text-black font-bold">{{ product.name }}</span>
-        </div>
-
-        {% include "catalog/partials/product_detail_content.html" %}
-    </div>
-</div>
+{% include "catalog/partials/product_detail_body.html" %}
 {% endblock %}

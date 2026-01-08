@@ -1,8 +1,7 @@
 {% load static %}
 <!-- Product Grid Partial -->
 {% for product in products %}
-<div
-    class="bg-white group relative p-4 flex flex-col h-full border border-transparent hover:border-gray-100 hover:shadow-xl transition-all">
+<div class="bg-white group relative p-4 flex flex-col h-full border border-gray-200 hover:shadow-xl transition-all">
     <!-- Badges -->
     <div class="absolute top-2 left-2 flex flex-col gap-1 z-10">
         {% if product.created_at|date:"U" > now|date:"U"|add:"-604800" %} <!-- Simple "New" logic: 7 days -->

@@ -246,8 +246,25 @@
 
     <script>
         lucide.createIcons();
+
+        function forceScrollTop() {
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            requestAnimationFrame(() => {
+                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            });
+        }
+
         document.body.addEventListener('htmx:afterSwap', function (evt) {
             lucide.createIcons();
+            if (evt.detail.target.id === 'main-content') {
+                forceScrollTop();
+            }
+        });
+
+        document.body.addEventListener('htmx:afterSettle', function (evt) {
+            if (evt.detail.target.id === 'main-content') {
+                forceScrollTop();
+            }
         });
     </script>
 </body>
