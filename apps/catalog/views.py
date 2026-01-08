@@ -30,8 +30,6 @@ def product_detail(request, pk):
 
 def home(request):
     # For now, home redirects to catalog or renders catalog as home
-    # The user asked for "catalog of goods" in the single index, so we'll treat list as home for simplicity or distinct
-    # Let's render the list as home for now.
     return product_list(request)
 
 
@@ -43,14 +41,17 @@ def cart_modal(request):
     total = 0
     
     for product_id, quantity in cart.items():
-        product = Product.objects.get(pk=product_id)
-        item_total = product.price * quantity
-        total += item_total
-        cart_items.append({
-            'product': product,
-            'quantity': quantity,
-            'total_price': item_total
-        })
+        try:
+            product = Product.objects.get(pk=product_id)
+            item_total = product.price * quantity
+            total += item_total
+            cart_items.append({
+                'product': product,
+                'quantity': quantity,
+                'total_price': item_total
+            })
+        except Product.DoesNotExist:
+            continue
 
     context = {
         'cart_items': cart_items,
