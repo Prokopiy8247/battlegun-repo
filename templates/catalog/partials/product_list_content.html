@@ -4,9 +4,7 @@
 <div class="bg-white group relative p-4 flex flex-col h-full border border-gray-200 hover:shadow-xl transition-all">
     <!-- Badges -->
     <div class="absolute top-2 left-2 flex flex-col gap-1 z-10">
-        {% if product.created_at|date:"U" > now|date:"U"|add:"-604800" %} <!-- Simple "New" logic: 7 days -->
-        <span class="bg-blue-600 text-white text-[9px] font-bold uppercase px-2 py-0.5 rounded-sm">New</span>
-        {% endif %}
+
         {% if product.discount_price %}
         <span class="bg-red-600 text-white text-[9px] font-bold uppercase px-2 py-0.5 rounded-sm">Sale</span>
         {% endif %}
