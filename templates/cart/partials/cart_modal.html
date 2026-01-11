@@ -43,8 +43,26 @@
                         <div class="text-[10px] text-gray-500 mb-2">{{ item.product.brand }}</div>
                         <div class="flex items-center justify-between">
                             <div class="font-black">{{ item.total_price }} €</div>
-                            <!-- Quantity Controls (simplified for now) -->
-                            <div class="text-xs text-gray-500">Qty: {{ item.quantity }}</div>
+
+                            <!-- Controls -->
+                            <div class="flex items-center space-x-3">
+                                <div class="flex items-center border border-gray-200 rounded">
+                                    <button hx-post="{% url 'cart_update' item.id %}"
+                                        hx-vals='{"quantity": {{ item.quantity|add:"-1" }} }'
+                                        hx-target="#cart-modal-container"
+                                        class="px-2 py-1 hover:bg-gray-100 text-xs">-</button>
+                                    <span class="px-2 text-xs font-bold">{{ item.quantity }}</span>
+                                    <button hx-post="{% url 'cart_update' item.id %}"
+                                        hx-vals='{"quantity": {{ item.quantity|add:"1" }} }'
+                                        hx-target="#cart-modal-container"
+                                        class="px-2 py-1 hover:bg-gray-100 text-xs">+</button>
+                                </div>
+
+                                <button hx-post="{% url 'cart_remove' item.id %}" hx-target="#cart-modal-container"
+                                    class="text-gray-400 hover:text-red-600 transition-colors">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,6 +93,12 @@
     // Re-init alpine component or icons if needed
     lucide.createIcons();
     // Simulate Alpine init since it's injected
-    // Alpine.initTree(document.getElementById('cart-modal-container'));
     // Actually Alpine observes DOM, so it should auto-init x-data.
 </script>
+
+<!-- OOB Updates for Header -->
+<span id="header-cart-count" hx-swap-oob="true"
+    class="absolute -top-1 -right-1 bg-black text-white text-[9px] rounded-full w-4 h-4 flex items-center justify-center font-bold">{{
+    cart.total_items }}</span>
+<span id="header-cart-total" hx-swap-oob="true" class="text-[11px] font-bold leading-none">{{ cart.total_price }}
+    €</span>

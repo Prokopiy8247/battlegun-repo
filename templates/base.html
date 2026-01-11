@@ -142,16 +142,18 @@
                         </button>
 
                         <!-- Cart Button (Trigger Modal) -->
-                        <button hx-get="{% url 'cart_modal' %}" hx-target="#cart-modal-container" hx-trigger="click"
+                        <button hx-get="{% url 'cart_detail' %}" hx-target="#cart-modal-container" hx-trigger="click"
                             class="bg-orange-600 hover:bg-orange-700 p-1 rounded transition-colors flex items-center h-12 min-w-[120px]">
                             <div
                                 class="flex flex-col items-center justify-center border-r border-orange-500/50 px-2 relative">
                                 <i data-lucide="shopping-cart" class="text-white w-6 h-6"></i>
                                 <span id="header-cart-count"
-                                    class="absolute -top-1 -right-1 bg-black text-white text-[9px] rounded-full w-4 h-4 flex items-center justify-center font-bold">0</span>
+                                    class="absolute -top-1 -right-1 bg-black text-white text-[9px] rounded-full w-4 h-4 flex items-center justify-center font-bold">{{
+                                    cart.total_items }}</span>
                             </div>
                             <div class="flex flex-col items-start px-3 text-white">
-                                <span id="header-cart-total" class="text-[11px] font-bold leading-none">0.00 €</span>
+                                <span id="header-cart-total" class="text-[11px] font-bold leading-none">{{
+                                    cart.total_price }} €</span>
                             </div>
                         </button>
                     </div>
