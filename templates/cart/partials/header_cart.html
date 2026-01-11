@@ -1,0 +1,6 @@
+<!-- OOB Updates for Header -->
+<span id="header-cart-count" hx-swap-oob="true"
+    class="absolute -top-1 -right-1 bg-black text-white text-[9px] rounded-full w-4 h-4 flex items-center justify-center font-bold">{{
+    cart.total_items|default:"0" }}</span>
+<span id="header-cart-total" hx-swap-oob="true" class="text-[11px] font-bold leading-none">{{
+    cart.total_price|default:"0" }} €</span>
