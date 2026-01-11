@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template.response import TemplateResponse
+from django.db.models import Q
 from .models import Product, Category
 
 def is_htmx(request):
@@ -12,6 +13,10 @@ def product_list(request, category_slug=None):
     if category_slug:
         current_category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=current_category)
+
+    query = request.GET.get('q')
+    if query:
+        products = products.filter(Q(name__icontains=query) | Q(description__icontains=query))
 
     context = {
         'products': products,
@@ -43,35 +48,4 @@ def home(request):
     return product_list(request)
 
 
-# --- Simple Cart Logic (Session Based) ---
-
-def cart_modal(request):
-    cart = request.session.get('cart', {})
-    cart_items = []
-    total = 0
-    
-    for product_id, quantity in cart.items():
-        try:
-            product = Product.objects.get(pk=product_id)
-            item_total = product.price * quantity
-            total += item_total
-            cart_items.append({
-                'product': product,
-                'quantity': quantity,
-                'total_price': item_total
-            })
-        except Product.DoesNotExist:
-            continue
-
-    context = {
-        'cart_items': cart_items,
-        'cart_total': total,
-    }
-    return render(request, 'cart/partials/cart_modal.html', context)
-
-def cart_add(request, pk):
-    cart = request.session.get('cart', {})
-    cart[str(pk)] = cart.get(str(pk), 0) + 1
-    request.session['cart'] = cart
-    
-    return cart_modal(request)
+    return product_list(request)

@@ -6,6 +6,5 @@ urlpatterns = [
     path('catalog/', views.product_list, name='product_list'),
     path('catalog/category/<slug:category_slug>/', views.product_list, name='product_list_by_category'),
     path('catalog/<uuid:pk>/', views.product_detail, name='product_detail'),
-    path('cart/', views.cart_modal, name='cart_modal'),
-    path('cart/add/<uuid:pk>/', views.cart_add, name='cart_add'),
+    path('catalog/<uuid:pk>/', views.product_detail, name='product_detail'),
 ]

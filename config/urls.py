@@ -19,9 +19,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('catalogue/', include('apps.catalog.urls')), # Legacy reference if any
-    path('', include('apps.catalog.urls')), # Main entry
-
+    path('cart/', include('apps.cart.urls')),
+    path('', include('apps.catalog.urls')),
 ]
 
 from django.conf import settings

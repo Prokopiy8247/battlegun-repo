@@ -57,6 +57,8 @@
                         <h1 class="text-3xl font-black tracking-tighter mb-4">
                             {% if current_category %}
                             {{ current_category.name }}
+                            {% elif request.GET.q %}
+                            Search: "{{ request.GET.q }}"
                             {% else %}
                             All Products
                             {% endif %}
