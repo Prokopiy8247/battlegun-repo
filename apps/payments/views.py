@@ -48,10 +48,11 @@ def webhook(request):
                 
                 # Update order status based on payment status
                 if payment_status == 'finished' or payment_status == 'confirmed':
-                    order.status = 'paid'
-                    order.save()
-                    # Send payment success email asynchronously
-                    send_payment_success_email.delay(order.id)
+                    if order.status != 'paid':
+                        order.status = 'paid'
+                        order.save()
+                        # Send payment success email asynchronously
+                        send_payment_success_email.delay(order.id)
                 elif payment_status == 'failed':
                     order.status = 'cancelled' # or failed
                     order.save()

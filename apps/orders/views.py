@@ -72,8 +72,9 @@ def checkout(request):
                     return redirect(invoice_url)
                     
             except Exception as e:
-                import traceback
-                traceback.print_exc()
+                import logging
+                logger = logging.getLogger(__name__)
+                logger.error(f"Order checkout error: {e}", exc_info=True)
                 messages.error(request, f"An error occurred: {e}")
         else:
             for error in form.errors.values():
