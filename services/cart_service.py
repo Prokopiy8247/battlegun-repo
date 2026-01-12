@@ -9,7 +9,10 @@ class CartService:
             request.session.create()
             session_key = request.session.session_key
         
-        cart, created = Cart.objects.get_or_create(session_key=session_key)
+        try:
+            cart = Cart.objects.prefetch_related('items__product').get(session_key=session_key)
+        except Cart.DoesNotExist:
+            cart = Cart.objects.create(session_key=session_key)
         return cart
 
     @staticmethod

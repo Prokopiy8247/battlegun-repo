@@ -7,7 +7,7 @@ def is_htmx(request):
     return request.headers.get('HX-Request') == 'true'
 
 def product_list(request, category_slug=None):
-    products = Product.objects.filter(is_active=True).order_by('-created_at')
+    products = Product.objects.filter(is_active=True).order_by('-created_at').prefetch_related('images')
     current_category = None
     
     if category_slug:
