@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-16 text-center">
+    <div class="mb-8">
+        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i data-lucide="check" class="w-10 h-10 text-green-600"></i>
+        </div>
+        <h1 class="text-4xl font-black uppercase mb-4">Payment Successful!</h1>
+        <p class="text-gray-600">Your payment has been received and your order is being processed.</p>
+    </div>
+
+    <div class="max-w-md mx-auto bg-white border border-gray-200 p-8 text-left">
+        <div class="flex justify-between items-center mb-6 pb-6 border-b border-gray-100">
+            <span class="text-sm text-gray-500 uppercase font-bold">Order Number</span>
+            <span class="font-black text-xl">{{ order.order_number }}</span>
+        </div>
+
+        <div class="space-y-4 mb-8">
+            <div class="flex justify-between">
+                <span class="text-gray-600">Amount Paid</span>
+                <span class="font-bold">{{ order.payment.price_amount }} {{ order.payment.price_currency|upper }}</span>
+            </div>
+            <div class="flex justify-between">
+                <span class="text-gray-600">Status</span>
+                <span class="font-bold text-green-600 uppercase">{{ order.payment.payment_status }}</span>
+            </div>
+        </div>
+
+        <a href="/" hx-get="/" hx-target="#main-content" hx-push-url="true"
+            class="block w-full bg-black text-white text-center font-bold uppercase tracking-widest py-4 hover:bg-gray-800 transition-colors">
+            Continue Shopping
+        </a>
+    </div>
+</div>
+{% endblock %}

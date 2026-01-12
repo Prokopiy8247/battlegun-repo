@@ -37,8 +37,8 @@ class NOWPaymentsService:
             "order_id": str(order.id),
             "order_description": f"Order {order.order_number}",
             "ipn_callback_url": f"{base_url}/payment/webhook/",
-            "success_url": f"{base_url}/order/{order.order_number}/",
-            "cancel_url": f"{base_url}/checkout/",
+            "success_url": f"{base_url}/payment/success/{order.order_number}/",
+            "cancel_url": f"{base_url}/payment/failed/{order.order_number}/",
              # "is_fixed_rate": True, # Optional
         }
 

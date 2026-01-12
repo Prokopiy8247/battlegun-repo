@@ -82,7 +82,7 @@
                 <span class="text-xs font-bold uppercase text-gray-500">Total</span>
                 <span class="text-2xl font-black">{{ cart_total }} €</span>
             </div>
-            <button
+            <button hx-get="{% url 'checkout' %}" hx-target="#main-content" hx-push-url="true"
                 class="w-full bg-orange-600 hover:bg-orange-700 text-white font-black uppercase tracking-widest py-4 transition-colors">
                 Checkout
             </button>
