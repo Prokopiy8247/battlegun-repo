@@ -9,6 +9,7 @@ from services.cart_service import CartService
 from services.nowpayments_service import NOWPaymentsService
 from apps.payments.models import Payment
 from core.utils import is_htmx
+from services.tasks import send_order_created_email
 
 def checkout(request):
     cart = CartService.get_cart_from_session(request)
@@ -54,6 +55,9 @@ def checkout(request):
                         price_amount=invoice_data.get('price_amount'),
                         price_currency=invoice_data.get('price_currency'),
                     )
+
+                    # Send order created email asynchronously
+                    send_order_created_email.delay(order.id)
 
                     CartService.clear_cart(request)
                     

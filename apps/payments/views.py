@@ -6,6 +6,7 @@ from django.views.decorators.http import require_POST
 from apps.orders.models import Order
 from .models import Payment
 from services.nowpayments_service import NOWPaymentsService
+from services.tasks import send_payment_success_email
 
 
 
@@ -49,6 +50,8 @@ def webhook(request):
                 if payment_status == 'finished' or payment_status == 'confirmed':
                     order.status = 'paid'
                     order.save()
+                    # Send payment success email asynchronously
+                    send_payment_success_email.delay(order.id)
                 elif payment_status == 'failed':
                     order.status = 'cancelled' # or failed
                     order.save()
