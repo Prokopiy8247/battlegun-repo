@@ -56,8 +56,8 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - static_volume:/app/staticfiles
       - media_volume:/app/media
-      - /etc/letsencrypt/live/yourdomain.com/fullchain.pem:/etc/letsencrypt/live/yourdomain.com/fullchain.pem:ro
-      - /etc/letsencrypt/live/yourdomain.com/privkey.pem:/etc/letsencrypt/live/yourdomain.com/privkey.pem:ro
+      - /etc/letsencrypt/live/battlegun.shop/fullchain.pem:/etc/letsencrypt/live/battlegun.shop/fullchain.pem:ro
+      - /etc/letsencrypt/live/battlegun.shop/privkey.pem:/etc/letsencrypt/live/battlegun.shop/privkey.pem:ro
     depends_on:
       - web
     networks:

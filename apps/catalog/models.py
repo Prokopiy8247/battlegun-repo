@@ -5,7 +5,7 @@ from django.utils.text import slugify
 class Category(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, max_length=200)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='categories/', blank=True, null=True)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
@@ -30,7 +30,7 @@ class Category(models.Model):
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, max_length=200)
     sku = models.CharField(max_length=50, unique=True)
     description_short = models.CharField(max_length=500)
     description = models.TextField()

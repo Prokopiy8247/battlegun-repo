@@ -37,8 +37,7 @@
             }">
                 <h2 class="text-xl font-bold uppercase mb-6 pb-2 border-b border-gray-200">Billing Details</h2>
 
-                <form method="post" action="{% url 'checkout' %}" hx-post="{% url 'checkout' %}"
-                    hx-target="#main-content" class="space-y-4">
+                <form method="post" action="{% url 'checkout' %}" class="space-y-4">
                     {% csrf_token %}
 
                     <div class="grid grid-cols-2 gap-4">

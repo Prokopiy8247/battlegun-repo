@@ -28,6 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
+CSRF_TRUSTED_ORIGINS = [f'https://{host}' for host in ALLOWED_HOSTS]
 SITE_URL = config('SITE_URL', default='http://localhost:8000')
 
 
@@ -45,7 +46,6 @@ INSTALLED_APPS = [
     'apps.cart',
     'apps.orders',
     'apps.payments',
-    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -56,8 +56,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
+if DEBUG:
+    try:
+        import debug_toolbar
+        INSTALLED_APPS += ['debug_toolbar']
+        MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
+    except ImportError:
+        pass
 
 ROOT_URLCONF = 'config.urls'
 
@@ -180,7 +187,7 @@ CELERY_TIMEZONE = TIME_ZONE
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": config('REDIS_LOCATION', default="redis://127.0.0.1:6379/1"),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -198,4 +205,5 @@ if not DEBUG:
     SECURE_HSTS_PRELOAD = True
     X_FRAME_OPTIONS = 'DENY'
     ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+    CSRF_TRUSTED_ORIGINS = [f'https://{host}' for host in ALLOWED_HOSTS]
 
