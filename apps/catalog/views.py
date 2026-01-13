@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.db.models import Q
+from django.core.cache import cache
 from .models import Product, Category
 
 def is_htmx(request):
@@ -30,10 +31,29 @@ def product_list(request, category_slug=None):
         elif header_target == 'category-grid':
              return render(request, 'catalog/partials/product_list_content.html', context)
     
+    # Simple caching for non-HTMX requests (full page loads usually imply navigation)
+    # We don't cache HTMX requests here as aggressively because they might be search results which are huge key space
+    # Actually, let's cache the queryset based on params if not search
+    
+    cache_key = f"product_list_{category_slug or 'all'}"
+    if not query: # Only cache if not searching
+        products_list = cache.get(cache_key)
+        if not products_list:
+             # Force evaluation for cache
+             products_list = list(products) 
+             cache.set(cache_key, products_list, 900) # 15 mins
+        context['products'] = products_list
+
     return render(request, 'catalog/product_list.html', context)
 
 def product_detail(request, pk):
-    product = get_object_or_404(Product, pk=pk)
+    cache_key = f"product_detail_{pk}"
+    product = cache.get(cache_key)
+    
+    if not product:
+        product = get_object_or_404(Product, pk=pk)
+        cache.set(cache_key, product, 900)
+        
     context = {
         'product': product,
     }
