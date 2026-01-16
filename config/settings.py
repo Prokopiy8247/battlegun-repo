@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.cart',
     'apps.orders',
     'apps.payments',
+    'apps.wishlist',
     'debug_toolbar',
 ]
 
@@ -73,6 +74,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'apps.catalog.context_processors.categories',
                 'apps.cart.context_processors.cart',
+                'apps.wishlist.context_processors.wishlist_count',
             ],
         },
     },

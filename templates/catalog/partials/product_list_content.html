@@ -16,10 +16,11 @@
             class="bg-white/90 hover:bg-orange-500 hover:text-white text-gray-600 p-1.5 rounded shadow-sm transition-colors">
             <i data-lucide="scale" class="w-3.5 h-3.5"></i>
         </button>
-        <button
-            class="bg-white/90 hover:bg-orange-500 hover:text-white text-gray-600 p-1.5 rounded shadow-sm transition-colors">
-            <i data-lucide="heart" class="w-3.5 h-3.5"></i>
-        </button>
+        {% if product.id in wishlist_product_ids %}
+        {% include "wishlist/partials/wishlist_button.html" with in_wishlist=True %}
+        {% else %}
+        {% include "wishlist/partials/wishlist_button.html" with in_wishlist=False %}
+        {% endif %}
     </div>
 
     <!-- Image -->

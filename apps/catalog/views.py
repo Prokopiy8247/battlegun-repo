@@ -35,6 +35,14 @@ def product_list(request, category_slug=None):
         'ARCTURUS', 'E&C', 'UMAREX', 'SRC', 'NUPROL'
     ]
 
+    # Wishlist IDs
+    wishlist_product_ids = []
+    if request.user.is_authenticated:
+        wishlist_product_ids = list(request.user.wishlist.values_list('product_id', flat=True))
+    elif request.session.session_key:
+        from apps.wishlist.models import WishlistItem
+        wishlist_product_ids = list(WishlistItem.objects.filter(session_key=request.session.session_key).values_list('product_id', flat=True))
+
     context = {
         'products': products,
         'current_category': current_category,
@@ -42,6 +50,7 @@ def product_list(request, category_slug=None):
         'all_manufacturers': ALL_MANUFACTURERS,
         'selected_power_supplies': power_supplies,
         'selected_manufacturers': manufacturers,
+        'wishlist_product_ids': wishlist_product_ids,
     }
 
     if is_htmx(request):

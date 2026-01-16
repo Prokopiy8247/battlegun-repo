@@ -136,9 +136,11 @@
                             <i data-lucide="scale" class="w-5 h-5"></i>
                             <span class="text-[10px] mt-1 font-medium">Compare</span>
                         </button>
-                        <button class="flex flex-col items-center hover:text-orange-500 transition-colors relative">
+                        <button class="flex flex-col items-center hover:text-orange-500 transition-colors relative"
+                            hx-get="{% url 'wishlist_list' %}" hx-target="#main-content" hx-push-url="true">
                             <i data-lucide="heart" class="w-5 h-5"></i>
                             <span class="text-[10px] mt-1 font-medium">Wish list</span>
+                            {% include "wishlist/partials/wishlist_count.html" %}
                         </button>
 
                         <!-- Cart Button (Trigger Modal) -->
