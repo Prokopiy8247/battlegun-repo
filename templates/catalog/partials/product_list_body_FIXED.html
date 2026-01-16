@@ -24,7 +24,9 @@
                                 <div class="space-y-3">
                                     {% for ps in all_power_supplies %}
                                     <label class="flex items-center space-x-3 cursor-pointer group">
-                                        <input type="checkbox" name="power_supply" value="{{ ps }}" {% if ps in selected_power_supplies %}checked{% endif %} class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
+                                        <input type="checkbox" name="power_supply" value="{{ ps }}" {% if ps in
+                                            selected_power_supplies %}checked{% endif %}
+                                            class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
                                         <span class="text-xs text-gray-600 group-hover:text-black">{{ ps }}</span>
                                     </label>
                                     {% endfor %}
@@ -35,17 +37,17 @@
                                 <div class="space-y-3">
                                     {% for m in all_manufacturers %}
                                     <label class="flex items-center space-x-3 cursor-pointer group">
-                                        <input type="checkbox" name="manufacturer" value="{{ m }}" {% if m in selected_manufacturers %}checked{% endif %} class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
+                                        <input type="checkbox" name="manufacturer" value="{{ m }}" {% if m in
+                                            selected_manufacturers %}checked{% endif %}
+                                            class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
                                         <span class="text-xs text-gray-600 group-hover:text-black">{{ m }}</span>
                                     </label>
                                     {% endfor %}
                                 </div>
-                                <div class="mt-8">
-                                    <a href="."
-                                        class="inline-block bg-[#2a2a2a] text-white text-[10px] font-bold uppercase tracking-widest px-6 py-2 hover:bg-black transition-colors">
-                                        Show all
-                                    </a>
-                                </div>
+                                <a href="."
+                                    class="mt-4 inline-block bg-[#2a2a2a] text-white text-[10px] font-bold uppercase tracking-widest px-6 py-2 hover:bg-black transition-colors">
+                                    Show all
+                                </a>
                             </div>
                         </div>
                     </form>

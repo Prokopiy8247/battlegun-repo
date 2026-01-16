@@ -1,4 +1,8 @@
-<div id="page-category" class="page-section">
+import os
+
+path = r'templates/catalog/partials/product_list_body.html'
+
+content = r'''<div id="page-category" class="page-section">
     <div class="bg-white min-h-screen">
         <div class="container mx-auto px-4 py-8">
             <div class="text-[10px] text-gray-500 mb-8 flex items-center space-x-2">
@@ -40,12 +44,10 @@
                                     </label>
                                     {% endfor %}
                                 </div>
-                                <div class="mt-8">
-                                    <a href="."
-                                        class="inline-block bg-[#2a2a2a] text-white text-[10px] font-bold uppercase tracking-widest px-6 py-2 hover:bg-black transition-colors">
-                                        Show all
-                                    </a>
-                                </div>
+                                <a href="."
+                                    class="mt-4 inline-block bg-[#2a2a2a] text-white text-[10px] font-bold uppercase tracking-widest px-6 py-2 hover:bg-black transition-colors">
+                                    Show all
+                                </a>
                             </div>
                         </div>
                     </form>
@@ -76,3 +78,14 @@
         </div>
     </div>
 </div>
+'''
+
+if os.path.exists(path):
+    print(f"Removing {path}")
+    os.remove(path)
+
+print(f"Writing to {path}")
+with open(path, 'w', encoding='utf-8') as f:
+    f.write(content)
+
+print("Done.")

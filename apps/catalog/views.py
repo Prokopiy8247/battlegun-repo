@@ -18,9 +18,30 @@ def product_list(request, category_slug=None):
     if query:
         products = products.filter(Q(name__icontains=query) | Q(description__icontains=query))
 
+    # Filter by Power Supply
+    power_supplies = request.GET.getlist('power_supply')
+    if power_supplies:
+        products = products.filter(power_supply__in=power_supplies)
+
+    # Filter by Manufacturer
+    manufacturers = request.GET.getlist('manufacturer')
+    if manufacturers:
+        products = products.filter(brand__in=manufacturers)
+
+    # Constants for filtering
+    ALL_POWER_SUPPLIES = ['Gas', 'Spring', 'AEG']
+    ALL_MANUFACTURERS = [
+        'SPECNA ARMS', 'GOLDEN EAGLE', 'DOUBLE BELL', 'CYMA', 'A&K', 
+        'ARCTURUS', 'E&C', 'UMAREX', 'SRC', 'NUPROL'
+    ]
+
     context = {
         'products': products,
         'current_category': current_category,
+        'all_power_supplies': ALL_POWER_SUPPLIES,
+        'all_manufacturers': ALL_MANUFACTURERS,
+        'selected_power_supplies': power_supplies,
+        'selected_manufacturers': manufacturers,
     }
 
     if is_htmx(request):
