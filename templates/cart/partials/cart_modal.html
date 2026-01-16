@@ -1,3 +1,4 @@
+{% load currency %}
 <!-- Cart Modal -->
 <div class="fixed inset-0 z-[100] flex justify-end" x-data="{ open: true }" x-show="open" style="display: none;">
     <!-- x-show handles display -->
@@ -42,7 +43,7 @@
                         <h3 class="text-xs font-bold leading-tight mb-1">{{ item.product.name }}</h3>
                         <div class="text-[10px] text-gray-500 mb-2">{{ item.product.brand }}</div>
                         <div class="flex items-center justify-between">
-                            <div class="font-black">{{ item.total_price }} €</div>
+                            <div class="font-black">{{ item.total_price|currency:request }}</div>
 
                             <!-- Controls -->
                             <div class="flex items-center space-x-3">
@@ -80,7 +81,7 @@
         <div class="border-t border-gray-100 p-6 bg-gray-50">
             <div class="flex justify-between items-end mb-4">
                 <span class="text-xs font-bold uppercase text-gray-500">Total</span>
-                <span class="text-2xl font-black">{{ cart_total }} €</span>
+                <span class="text-2xl font-black">{{ cart_total|currency:request }}</span>
             </div>
             <button hx-get="{% url 'checkout' %}" hx-target="#main-content" hx-push-url="true"
                 class="w-full bg-orange-600 hover:bg-orange-700 text-white font-black uppercase tracking-widest py-4 transition-colors">

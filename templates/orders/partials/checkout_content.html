@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load currency %}
 
 <!-- OOB Swap to close cart modal if it's open -->
 <div id="cart-modal-container" hx-swap-oob="true"></div>
@@ -121,22 +122,22 @@
                             <span class="font-bold">{{ item.product.name }}</span>
                             <div class="text-xs text-gray-500">Qty: {{ item.quantity }}</div>
                         </div>
-                        <div class="font-bold">{{ item.total_price }} €</div>
+                        <div class="font-bold">{{ item.total_price|currency:request }}</div>
                     </div>
                     {% endfor %}
 
                     <div class="border-t border-gray-200 pt-4 space-y-2 text-sm">
                         <div class="flex justify-between">
                             <span>Subtotal</span>
-                            <span>{{ cart.total_price }} €</span>
+                            <span>{{ cart.total_price|currency:request }}</span>
                         </div>
                         <div class="flex justify-between">
                             <span>Shipping</span>
-                            <span>0.00 €</span>
+                            <span>{{ 0|currency:request }}</span>
                         </div>
                         <div class="flex justify-between font-black text-lg pt-2 border-t border-gray-200">
                             <span>Total</span>
-                            <span>{{ cart.total_price }} €</span>
+                            <span>{{ cart.total_price|currency:request }}</span>
                         </div>
                     </div>
                 </div>

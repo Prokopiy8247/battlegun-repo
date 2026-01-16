@@ -1,4 +1,4 @@
-{% load static %}
+{% load currency %}
 <!-- Product Grid Partial -->
 {% for product in products %}
 <div class="bg-white group relative p-4 flex flex-col h-full border border-gray-200 hover:shadow-xl transition-all">
@@ -40,9 +40,9 @@
     <!-- Content -->
     <div class="flex-1 flex flex-col">
         <div class="flex items-baseline space-x-2 mb-1">
-            <span class="text-lg font-black">{{ product.price }} €</span>
+            <span class="text-lg font-black">{{ product.price|currency:request }}</span>
             {% if product.discount_price %}
-            <span class="text-xs text-red-600 line-through">{{ product.discount_price }} €</span>
+            <span class="text-xs text-red-600 line-through">{{ product.discount_price|currency:request }}</span>
             {% endif %}
         </div>
         <h3 class="text-[11px] font-medium leading-tight text-gray-800 line-clamp-3 mb-2 min-h-[3rem] cursor-pointer hover:text-orange-500"

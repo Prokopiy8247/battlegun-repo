@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.catalog',
-    'core',
+    'apps.core',
     'apps.cart',
     'apps.orders',
     'apps.payments',
@@ -75,6 +75,7 @@ TEMPLATES = [
                 'apps.catalog.context_processors.categories',
                 'apps.cart.context_processors.cart',
                 'apps.wishlist.context_processors.wishlist_count',
+                'apps.core.context_processors.currency',
             ],
         },
     },
@@ -190,3 +191,15 @@ if not DEBUG:
     X_FRAME_OPTIONS = 'DENY'
     ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
+# Currency Settings
+DEFAULT_CURRENCY = 'EUR'
+CURRENCIES = {
+    'EUR': {'symbol': '€', 'name': 'Euro'},
+    'USD': {'symbol': '$', 'name': 'US Dollar'},
+    'PLN': {'symbol': 'zł', 'name': 'Polish Zloty'},
+}
+EXCHANGE_RATES = {
+    'EUR': 1.0,
+    'USD': 1.08,  # Example rate
+    'PLN': 4.25,  # Example rate
+}

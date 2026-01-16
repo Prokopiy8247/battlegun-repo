@@ -1,4 +1,4 @@
-{% load static %}
+{% load currency %}
 <!-- Product Detail Content -->
 <div class="bg-white p-6 shadow-sm border border-gray-100">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -29,9 +29,9 @@
                 <div class="text-[10px] text-gray-400 mb-4">Product code: {{ product.sku|default:product.id }}</div>
 
                 <div class="flex items-baseline space-x-4 mb-6">
-                    <span class="text-4xl font-black">{{ product.price }} €</span>
+                    <span class="text-4xl font-black">{{ product.price|currency:request }}</span>
                     {% if product.discount_price %}
-                    <span class="text-xl text-red-600 line-through">{{ product.discount_price }} €</span>
+                    <span class="text-xl text-red-600 line-through">{{ product.discount_price|currency:request }}</span>
                     {% endif %}
                 </div>
             </div>
