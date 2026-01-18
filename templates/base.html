@@ -141,19 +141,19 @@
                                 x-transition:leave-end="opacity-0 translate-y-1"
                                 class="absolute right-0 top-full mt-0 w-32 bg-white text-black shadow-xl rounded overflow-hidden">
 
-                                <a href="{% change_lang 'en' %}"
+                                <a href="#" onclick="switchLanguage('en'); return false;"
                                     class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center text-xs font-bold {% if LANGUAGE_CODE == 'en' %}bg-gray-100{% endif %}">
                                     <span>English</span>
                                     <img src="https://flagcdn.com/w20/gb.png" alt="EN" class="w-4">
                                 </a>
 
-                                <a href="{% change_lang 'pl' %}"
+                                <a href="#" onclick="switchLanguage('pl'); return false;"
                                     class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center text-xs font-bold {% if LANGUAGE_CODE == 'pl' %}bg-gray-100{% endif %}">
                                     <span>Polski</span>
                                     <img src="https://flagcdn.com/w20/pl.png" alt="PL" class="w-4">
                                 </a>
 
-                                <a href="{% change_lang 'ru' %}"
+                                <a href="#" onclick="switchLanguage('ru'); return false;"
                                     class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center text-xs font-bold {% if LANGUAGE_CODE == 'ru' %}bg-gray-100{% endif %}">
                                     <span>Русский</span>
                                     <img src="https://flagcdn.com/w20/ru.png" alt="RU" class="w-4">
@@ -318,6 +318,24 @@
 
     <script>
         lucide.createIcons();
+
+        function switchLanguage(langCode) {
+            let path = window.location.pathname;
+            // Regex to match existing language prefix like /en/, /pl/, /ru/
+            // and replace it with new langCode
+            if (path.match(/^\/[a-z]{2}\//)) {
+                path = path.replace(/^\/[a-z]{2}\//, '/' + langCode + '/');
+            } else {
+                // If no language prefix found (unlikely with i18n_patterns but possible), prepend it
+                // Or if at root '/'
+                if (path === '/') {
+                    path = '/' + langCode + '/';
+                } else {
+                    path = '/' + langCode + path;
+                }
+            }
+            window.location.href = path + window.location.search;
+        }
 
         function forceScrollTop() {
             window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
