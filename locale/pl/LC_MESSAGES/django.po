@@ -1,0 +1,194 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Contact form"
+msgstr "Formularz kontaktowy"
+
+msgid "Best airsoft guns!"
+msgstr "Najlepsze karabiny ASG!"
+
+msgid "Currency:"
+msgstr "Waluta:"
+
+msgid "Language:"
+msgstr "Język:"
+
+msgid "Find product"
+msgstr "Szukaj produktu"
+
+msgid "Search"
+msgstr "Szukaj"
+
+msgid "Login / Register"
+msgstr "Zaloguj / Zarejestruj"
+
+msgid "Compare"
+msgstr "Porównaj"
+
+msgid "Wish list"
+msgstr "Lista życzeń"
+
+msgid "Information"
+msgstr "Informacje"
+
+msgid "Shipping"
+msgstr "Wysyłka"
+
+msgid "Payments"
+msgstr "Płatności"
+
+msgid "Returns and complaints"
+msgstr "Zwroty i reklamacje"
+
+msgid "Promotion terms"
+msgstr "Regulamin promocji"
+
+msgid "Promotions"
+msgstr "Promocje"
+
+msgid "Contact Us"
+msgstr "Kontakt"
+
+msgid "Wholesale:"
+msgstr "Hurt:"
+
+msgid "Powered by"
+msgstr "Wspierane przez"
+
+msgid "How can I help?"
+msgstr "W czym mogę pomóc?"
+
+# New Categories
+msgid "Machine Guns"
+msgstr "Karabiny maszynowe"
+
+msgid "Pistols"
+msgstr "Pistolety"
+
+msgid "Rifles"
+msgstr "Karabiny"
+
+msgid "Shotguns"
+msgstr "Strzelby"
+
+msgid "Sniper Rifles"
+msgstr "Karabiny snajperskie"
+
+msgid "Assault Rifles"
+msgstr "Karabiny szturmowe"
+
+msgid "Submachine Guns"
+msgstr "Pistolety maszynowe"
+
+# Filters & UI
+msgid "Power supply"
+msgstr "Zasilanie"
+
+msgid "Manufacturer"
+msgstr "Producent"
+
+msgid "Show all"
+msgstr "Pokaż wszystko"
+
+msgid "Airsoft replicas"
+msgstr "Repliki ASG"
+
+msgid "All Products"
+msgstr "Wszystkie produkty"
+
+msgid "Producer"
+msgstr "Producent"
+
+msgid "Sale"
+msgstr "Wyprzedaż"
+
+msgid "Add to basket"
+msgstr "Dodaj do koszyka"
+
+# Product Detail
+msgid "Catalog"
+msgstr "Katalog"
+
+msgid "Product code"
+msgstr "Kod produktu"
+
+msgid "Specifications"
+msgstr "Specyfikacja"
+
+msgid "Power Source"
+msgstr "Napęd"
+
+msgid "FPS"
+msgstr "Prędkość wylotowa (FPS)"
+
+msgid "Material"
+msgstr "Materiał"
+
+msgid "Color"
+msgstr "Kolor"
+
+msgid "Weight"
+msgstr "Waga"
+
+msgid "Description"
+msgstr "Opis"
+
+# Cart & Wishlist
+msgid "Shopping Cart"
+msgstr "Koszyk"
+
+msgid "Your cart is empty"
+msgstr "Twój koszyk jest pusty"
+
+msgid "Total"
+msgstr "Suma"
+
+msgid "Checkout"
+msgstr "Do kasy"
+
+msgid "Wishlist"
+msgstr "Lista życzeń"
+
+msgid "Product"
+msgstr "Produkt"
+
+msgid "Added on"
+msgstr "Dodano"
+
+msgid "Unit price"
+msgstr "Cena jednostkowa"
+
+msgid "Actions"
+msgstr "Działania"
+
+msgid "Buy now"
+msgstr "Kup teraz"
+
+msgid "Remove from the list"
+msgstr "Usuń z listy"
+
+msgid "Your wishlist is empty"
+msgstr "Twoja lista życzeń jest pusta"
+
+msgid "Browse our catalog and add items you like!"
+msgstr "Przeglądaj katalog i dodawaj ulubione produkty!"
+
+msgid "Start Shopping"
+msgstr "Zacznij zakupy"
+
+# Common Specs Values
+msgid "Gas"
+msgstr "Gaz"
+
+msgid "Spring"
+msgstr "Sprężyna"
+
+msgid "AEG"
+msgstr "Elektryczne (AEG)"
+
+msgid "Metal"
+msgstr "Metal"
+
+msgid "Polymer"
+msgstr "Polimer"

@@ -1,4 +1,5 @@
 {% load currency %}
+{% load i18n %}
 <!-- Cart Modal -->
 <div class="fixed inset-0 z-[100] flex justify-end" x-data="{ open: true }" x-show="open" style="display: none;">
     <!-- x-show handles display -->
@@ -19,7 +20,7 @@
 
         <!-- Header -->
         <div class="flex items-center justify-between p-6 border-b border-gray-100">
-            <h2 class="text-xl font-black uppercase tracking-tight">Shopping Cart</h2>
+            <h2 class="text-xl font-black uppercase tracking-tight">{% trans "Shopping Cart" %}</h2>
             <button @click="document.getElementById('cart-modal-container').innerHTML = ''"
                 class="text-gray-400 hover:text-black p-2">
                 <i data-lucide="x" class="w-6 h-6"></i>
@@ -72,7 +73,7 @@
             {% else %}
             <div class="h-full flex flex-col items-center justify-center text-center text-gray-400">
                 <i data-lucide="shopping-bag" class="w-16 h-16 mb-4 opacity-20"></i>
-                <p class="uppercase font-bold text-sm">Your cart is empty</p>
+                <p class="uppercase font-bold text-sm">{% trans "Your cart is empty" %}</p>
             </div>
             {% endif %}
         </div>
@@ -80,12 +81,12 @@
         <!-- Footer -->
         <div class="border-t border-gray-100 p-6 bg-gray-50">
             <div class="flex justify-between items-end mb-4">
-                <span class="text-xs font-bold uppercase text-gray-500">Total</span>
+                <span class="text-xs font-bold uppercase text-gray-500">{% trans "Total" %}</span>
                 <span class="text-2xl font-black">{{ cart_total|currency:request }}</span>
             </div>
             <button hx-get="{% url 'checkout' %}" hx-target="#main-content" hx-push-url="true"
                 class="w-full bg-orange-600 hover:bg-orange-700 text-white font-black uppercase tracking-widest py-4 transition-colors">
-                Checkout
+                {% trans "Checkout" %}
             </button>
         </div>
     </div>

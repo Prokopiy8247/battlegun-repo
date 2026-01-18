@@ -6,13 +6,8 @@
             <div class="text-[10px] text-gray-500 mb-8 flex items-center space-x-2">
                 <span>{% trans "Airsoft replicas" %}</span>
                 <span>»</span>
-                <span class="text-black font-bold">
-                    {% if current_category %}
-                    {{ current_category.name|trans_str }}
-                    {% else %}
-                    {% trans "All Products" %}
-                    {% endif %}
-                </span>
+                <span class="text-black font-bold">{% if current_category %}{{ current_category.name|trans_str }}{% else
+                    %}{% trans "All Products" %}{% endif %}</span>
             </div>
 
             <div class="grid grid-cols-12 gap-8">
@@ -32,13 +27,9 @@
                                 <div class="space-y-3">
                                     {% for ps in all_power_supplies %}
                                     <label class="flex items-center space-x-3 cursor-pointer group">
-                                        {% if ps in selected_power_supplies %}
-                                        <input type="checkbox" name="power_supply" value="{{ ps }}" checked
+                                        <input type="checkbox" name="power_supply" value="{{ ps }}" {% if ps in
+                                            selected_power_supplies %}checked{% endif %}
                                             class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
-                                        {% else %}
-                                        <input type="checkbox" name="power_supply" value="{{ ps }}"
-                                            class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
-                                        {% endif %}
                                         <span class="text-xs text-gray-600 group-hover:text-black">{{ ps|trans_str
                                             }}</span>
                                     </label>
@@ -51,13 +42,9 @@
                                 <div class="space-y-3">
                                     {% for m in all_manufacturers %}
                                     <label class="flex items-center space-x-3 cursor-pointer group">
-                                        {% if m in selected_manufacturers %}
-                                        <input type="checkbox" name="manufacturer" value="{{ m }}" checked
+                                        <input type="checkbox" name="manufacturer" value="{{ m }}" {% if m in
+                                            selected_manufacturers %}checked{% endif %}
                                             class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
-                                        {% else %}
-                                        <input type="checkbox" name="manufacturer" value="{{ m }}"
-                                            class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
-                                        {% endif %}
                                         <span class="text-xs text-gray-600 group-hover:text-black">{{ m }}</span>
                                     </label>
                                     {% endfor %}

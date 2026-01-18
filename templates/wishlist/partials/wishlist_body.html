@@ -1,16 +1,17 @@
 {% load currency %}
+{% load i18n %}
 <div class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-black uppercase mb-8">Wishlist</h1>
+    <h1 class="text-3xl font-black uppercase mb-8">{% trans "Wishlist" %}</h1>
 
     {% if wishlist_items %}
     <div class="bg-white border border-gray-200">
         <table class="w-full text-left border-collapse">
             <thead>
                 <tr class="border-b border-gray-200 text-xs font-bold uppercase text-gray-500">
-                    <th class="p-4">Product</th>
-                    <th class="p-4">Added on</th>
-                    <th class="p-4">Unit price</th>
-                    <th class="p-4 w-48">Actions</th>
+                    <th class="p-4">{% trans "Product" %}</th>
+                    <th class="p-4">{% trans "Added on" %}</th>
+                    <th class="p-4">{% trans "Unit price" %}</th>
+                    <th class="p-4 w-48">{% trans "Actions" %}</th>
                 </tr>
             </thead>
             <tbody id="wishlist-table-body">
@@ -35,7 +36,7 @@
                                     {{ item.product.name }}
                                 </a>
                                 <div class="text-[10px] text-gray-400 mt-1">
-                                    Product code: {{ item.product.sku }}
+                                    {% trans "Product code" %}: {{ item.product.sku }}
                                 </div>
                             </div>
                         </div>
@@ -52,13 +53,13 @@
                                 class="w-full bg-[#2a2a2a] hover:bg-black text-white text-[10px] font-bold uppercase py-2 px-3 transition-colors"
                                 hx-post="{% url 'cart_add' item.product.id %}" hx-target="#cart-modal-container"
                                 hx-swap="innerHTML">
-                                Buy now
+                                {% trans "Buy now" %}
                             </button>
                             <button
                                 class="w-full bg-[#2a2a2a] hover:bg-black text-white text-[10px] font-bold uppercase py-2 px-3 transition-colors"
                                 hx-post="{% url 'wishlist_remove' item.product.id %}" hx-swap="outerHTML"
                                 hx-target="closest tr">
-                                Remove from the list
+                                {% trans "Remove from the list" %}
                             </button>
                         </div>
                     </td>
@@ -70,11 +71,11 @@
     {% else %}
     <div class="text-center py-16 bg-white border border-gray-200">
         <i data-lucide="heart" class="w-12 h-12 mx-auto text-gray-300 mb-4"></i>
-        <h2 class="text-xl font-bold mb-2">Your wishlist is empty</h2>
-        <p class="text-gray-500 mb-6">Browse our catalog and add items you like!</p>
+        <h2 class="text-xl font-bold mb-2">{% trans "Your wishlist is empty" %}</h2>
+        <p class="text-gray-500 mb-6">{% trans "Browse our catalog and add items you like!" %}</p>
         <a href="{% url 'product_list' %}"
             class="inline-block bg-orange-600 text-white font-bold uppercase text-xs px-6 py-3 hover:bg-orange-700 transition-colors">
-            Start Shopping
+            {% trans "Start Shopping" %}
         </a>
     </div>
     {% endif %}

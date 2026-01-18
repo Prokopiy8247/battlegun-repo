@@ -1,4 +1,6 @@
 {% load currency %}
+{% load i18n %}
+{% load trans_extras %}
 <!-- Product Grid Partial -->
 {% for product in products %}
 <div class="bg-white group relative p-4 flex flex-col h-full border border-gray-200 hover:shadow-xl transition-all">
@@ -6,7 +8,8 @@
     <div class="absolute top-2 left-2 flex flex-col gap-1 z-10">
 
         {% if product.discount_price %}
-        <span class="bg-red-600 text-white text-[9px] font-bold uppercase px-2 py-0.5 rounded-sm">Sale</span>
+        <span class="bg-red-600 text-white text-[9px] font-bold uppercase px-2 py-0.5 rounded-sm">{% trans "Sale"
+            %}</span>
         {% endif %}
     </div>
 
@@ -52,7 +55,8 @@
 
         <div class="mt-auto">
             <div class="flex items-center justify-between text-[10px] text-gray-500 mb-3">
-                <div>Producer: <span class="font-bold text-gray-800">{{ product.brand|default:"N/A" }}</span></div>
+                <div>{% trans "Producer" %}: <span class="font-bold text-gray-800">{{ product.brand|default:na_text
+                        }}</span></div>
                 <div class="flex items-center">
                     <div class="flex items-center mr-1 text-gray-300">
                         <!-- Star placeholder (0 reviews) -->
@@ -70,7 +74,7 @@
                 class="w-full h-9 flex items-center justify-center space-x-2 rounded transition-all font-bold text-xs uppercase tracking-wider bg-orange-600 hover:bg-orange-700 text-white"
                 hx-post="{% url 'cart_add' product.id %}" hx-target="#cart-modal-container" hx-swap="innerHTML">
                 <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
-                <span>Add to basket</span>
+                <span>{% trans "Add to basket" %}</span>
             </button>
         </div>
     </div>

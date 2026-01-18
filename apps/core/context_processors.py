@@ -9,4 +9,5 @@ def currency(request):
         'currency_code': currency_code,
         'currency_symbol': settings.CURRENCIES.get(currency_code, {}).get('symbol', '€'),
         'currencies': settings.CURRENCIES,
+        'na_text': "N/A",  # or gettext("N/A") if you want it translated
     }
