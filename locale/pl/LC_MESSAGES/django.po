@@ -1,194 +1,264 @@
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-18 16:31+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
+#: .\config\settings.py:146
+msgid "English"
+msgstr ""
+
+#: .\config\settings.py:147
+msgid "Polish"
+msgstr ""
+
+#: .\config\settings.py:148
+msgid "Russian"
+msgstr ""
+
+#: .\templates\base.html:70
+msgid "Contact"
+msgstr "Kontakt"
+
+#: .\templates\base.html:74
 msgid "Contact form"
 msgstr "Formularz kontaktowy"
 
+#: .\templates\base.html:80
 msgid "Best airsoft guns!"
 msgstr "Najlepsze karabiny ASG!"
 
+#: .\templates\base.html:92
 msgid "Currency:"
 msgstr "Waluta:"
 
+#: .\templates\base.html:122
 msgid "Language:"
 msgstr "Język:"
 
+#: .\templates\base.html:189
 msgid "Find product"
 msgstr "Szukaj produktu"
 
+#: .\templates\base.html:195
+#: .\templates\catalog\partials\product_list_body.html:84
 msgid "Search"
 msgstr "Szukaj"
 
+#: .\templates\base.html:203
 msgid "Login / Register"
 msgstr "Zaloguj / Zarejestruj"
 
+#: .\templates\base.html:207
 msgid "Compare"
 msgstr "Porównaj"
 
+#: .\templates\base.html:212
 msgid "Wish list"
 msgstr "Lista życzeń"
 
+#: .\templates\base.html:265
 msgid "Information"
 msgstr "Informacje"
 
+#: .\templates\base.html:267
 msgid "Shipping"
 msgstr "Wysyłka"
 
+#: .\templates\base.html:268
 msgid "Payments"
 msgstr "Płatności"
 
-msgid "Returns and complaints"
-msgstr "Zwroty i reklamacje"
-
+#: .\templates\base.html:271
 msgid "Promotion terms"
 msgstr "Regulamin promocji"
 
+#: .\templates\base.html:273
 msgid "Promotions"
 msgstr "Promocje"
 
+#: .\templates\base.html:277
 msgid "Contact Us"
 msgstr "Kontakt"
 
+#: .\templates\base.html:283
 msgid "Wholesale:"
 msgstr "Hurt:"
 
+#: .\templates\base.html:295
 msgid "Powered by"
 msgstr "Wspierane przez"
 
+#: .\templates\base.html:306
 msgid "How can I help?"
 msgstr "W czym mogę pomóc?"
 
-# New Categories
-msgid "Machine Guns"
-msgstr "Karabiny maszynowe"
-
-msgid "Pistols"
-msgstr "Pistolety"
-
-msgid "Rifles"
-msgstr "Karabiny"
-
-msgid "Shotguns"
-msgstr "Strzelby"
-
-msgid "Sniper Rifles"
-msgstr "Karabiny snajperskie"
-
-msgid "Assault Rifles"
-msgstr "Karabiny szturmowe"
-
-msgid "Submachine Guns"
-msgstr "Pistolety maszynowe"
-
-# Filters & UI
-msgid "Power supply"
-msgstr "Zasilanie"
-
-msgid "Manufacturer"
-msgstr "Producent"
-
-msgid "Show all"
-msgstr "Pokaż wszystko"
-
-msgid "Airsoft replicas"
-msgstr "Repliki ASG"
-
-msgid "All Products"
-msgstr "Wszystkie produkty"
-
-msgid "Producer"
-msgstr "Producent"
-
-msgid "Sale"
-msgstr "Wyprzedaż"
-
-msgid "Add to basket"
-msgstr "Dodaj do koszyka"
-
-# Product Detail
-msgid "Catalog"
-msgstr "Katalog"
-
-msgid "Product code"
-msgstr "Kod produktu"
-
-msgid "Specifications"
-msgstr "Specyfikacja"
-
-msgid "Power Source"
-msgstr "Napęd"
-
-msgid "FPS"
-msgstr "Prędkość wylotowa (FPS)"
-
-msgid "Material"
-msgstr "Materiał"
-
-msgid "Color"
-msgstr "Kolor"
-
-msgid "Weight"
-msgstr "Waga"
-
-msgid "Description"
-msgstr "Opis"
-
 # Cart & Wishlist
+#: .\templates\cart\partials\cart_modal.html:23
 msgid "Shopping Cart"
 msgstr "Koszyk"
 
+#: .\templates\cart\partials\cart_modal.html:76
 msgid "Your cart is empty"
 msgstr "Twój koszyk jest pusty"
 
+#: .\templates\cart\partials\cart_modal.html:84
 msgid "Total"
 msgstr "Suma"
 
+#: .\templates\cart\partials\cart_modal.html:89
 msgid "Checkout"
 msgstr "Do kasy"
 
+#: .\templates\catalog\partials\product_detail_content.html:19
+msgid "Sale"
+msgstr "Wyprzedaż"
+
+#: .\templates\catalog\partials\product_detail_content.html:31
+#: .\templates\wishlist\partials\wishlist_body.html:39
+msgid "Product code"
+msgstr "Kod produktu"
+
+#: .\templates\catalog\partials\product_detail_content.html:47
+#: .\templates\catalog\partials\product_list_content.html:77
+msgid "Add to basket"
+msgstr "Dodaj do koszyka"
+
+#: .\templates\catalog\partials\product_detail_content.html:53
+msgid "Specifications"
+msgstr "Specyfikacja"
+
+#: .\templates\catalog\partials\product_detail_content.html:55
+msgid "Power Source"
+msgstr "Napęd"
+
+#: .\templates\catalog\partials\product_detail_content.html:58
+msgid "FPS"
+msgstr "Prędkość wylotowa (FPS)"
+
+#: .\templates\catalog\partials\product_detail_content.html:61
+msgid "Material"
+msgstr "Materiał"
+
+#: .\templates\catalog\partials\product_detail_content.html:64
+msgid "Color"
+msgstr "Kolor"
+
+#: .\templates\catalog\partials\product_detail_content.html:67
+msgid "Weight"
+msgstr "Waga"
+
+#: .\templates\catalog\partials\product_detail_content.html:74
+msgid "Description"
+msgstr "Opis"
+
+#: .\templates\catalog\partials\product_list_body.html:7
+msgid "Airsoft replicas"
+msgstr "Repliki ASG"
+
+#: .\templates\catalog\partials\product_list_body.html:13
+#: .\templates\catalog\partials\product_list_body.html:86
+msgid "All Products"
+msgstr "Wszystkie produkty"
+
+# Filters & UI
+#: .\templates\catalog\partials\product_list_body.html:30
+msgid "Power supply"
+msgstr "Zasilanie"
+
+#: .\templates\catalog\partials\product_list_body.html:49
+msgid "Manufacturer"
+msgstr "Producent"
+
+#: .\templates\catalog\partials\product_list_body.html:68
+msgid "Show all"
+msgstr "Pokaż wszystko"
+
+#: .\templates\catalog\partials\product_list_content.html:58
+msgid "Producer"
+msgstr "Producent"
+
+#: .\templates\wishlist\partials\wishlist_body.html:4
 msgid "Wishlist"
 msgstr "Lista życzeń"
 
+#: .\templates\wishlist\partials\wishlist_body.html:11
 msgid "Product"
 msgstr "Produkt"
 
+#: .\templates\wishlist\partials\wishlist_body.html:12
 msgid "Added on"
 msgstr "Dodano"
 
+#: .\templates\wishlist\partials\wishlist_body.html:13
 msgid "Unit price"
 msgstr "Cena jednostkowa"
 
+#: .\templates\wishlist\partials\wishlist_body.html:14
 msgid "Actions"
 msgstr "Działania"
 
+#: .\templates\wishlist\partials\wishlist_body.html:56
 msgid "Buy now"
 msgstr "Kup teraz"
 
+#: .\templates\wishlist\partials\wishlist_body.html:62
 msgid "Remove from the list"
 msgstr "Usuń z listy"
 
+#: .\templates\wishlist\partials\wishlist_body.html:74
 msgid "Your wishlist is empty"
 msgstr "Twoja lista życzeń jest pusta"
 
+#: .\templates\wishlist\partials\wishlist_body.html:75
 msgid "Browse our catalog and add items you like!"
 msgstr "Przeglądaj katalog i dodawaj ulubione produkty!"
 
+#: .\templates\wishlist\partials\wishlist_body.html:78
 msgid "Start Shopping"
 msgstr "Zacznij zakupy"
 
+#~ msgid "Returns and complaints"
+#~ msgstr "Zwroty i reklamacje"
+
+# New Categories
+#~ msgid "Machine Guns"
+#~ msgstr "Karabiny maszynowe"
+
+#~ msgid "Pistols"
+#~ msgstr "Pistolety"
+
+#~ msgid "Rifles"
+#~ msgstr "Karabiny"
+
+#~ msgid "Shotguns"
+#~ msgstr "Strzelby"
+
+#~ msgid "Sniper Rifles"
+#~ msgstr "Karabiny snajperskie"
+
+#~ msgid "Assault Rifles"
+#~ msgstr "Karabiny szturmowe"
+
+#~ msgid "Submachine Guns"
+#~ msgstr "Pistolety maszynowe"
+
+# Product Detail
+#~ msgid "Catalog"
+#~ msgstr "Katalog"
+
 # Common Specs Values
-msgid "Gas"
-msgstr "Gaz"
+#~ msgid "Gas"
+#~ msgstr "Gaz"
 
-msgid "Spring"
-msgstr "Sprężyna"
+#~ msgid "Spring"
+#~ msgstr "Sprężyna"
 
-msgid "AEG"
-msgstr "Elektryczne (AEG)"
+#~ msgid "AEG"
+#~ msgstr "Elektryczne (AEG)"
 
-msgid "Metal"
-msgstr "Metal"
+#~ msgid "Metal"
+#~ msgstr "Metal"
 
-msgid "Polymer"
-msgstr "Polimer"
+#~ msgid "Polymer"
+#~ msgstr "Polimer"
