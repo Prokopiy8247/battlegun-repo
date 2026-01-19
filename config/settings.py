@@ -83,6 +83,7 @@ TEMPLATES = [
                 'apps.cart.context_processors.cart',
                 'apps.wishlist.context_processors.wishlist_count',
                 'apps.core.context_processors.currency',
+                'django.template.context_processors.i18n',
             ],
         },
     },

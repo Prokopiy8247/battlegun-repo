@@ -286,8 +286,8 @@ msgstr "Начать покупки"
 #~ msgid "Compare"
 #~ msgstr "Сравнение"
 
-#~ msgid "Returns and complaints"
-#~ msgstr "Возврат и рекламации"
+msgid "Returns and complaints"
+msgstr "Возврат и рекламации"
 
 # New Categories
 #~ msgid "Machine Guns"

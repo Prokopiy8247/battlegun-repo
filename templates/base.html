@@ -242,8 +242,17 @@
                         <ul class="space-y-3 text-xs text-gray-400">
                             <li><a href="#" class="hover:text-white transition-colors">{% trans "Shipping" %}</a></li>
                             <li><a href="#" class="hover:text-white transition-colors">{% trans "Payments" %}</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">{% blocktrans %}Returns and
-                                    complaints{% endblocktrans %}</a></li>
+                            <li>
+                                <a href="#" class="hover:text-white transition-colors">
+                                    {% if LANGUAGE_CODE == 'ru' %}
+                                    Возврат и рекламации
+                                    {% elif LANGUAGE_CODE == 'pl' %}
+                                    Zwroty i reklamacje
+                                    {% else %}
+                                    Returns and complaints
+                                    {% endif %}
+                                </a>
+                            </li>
                             <li><a href="#" class="hover:text-white transition-colors">{% trans "Promotion terms" %}</a>
                             </li>
                             <li><a href="#" class="hover:text-white transition-colors">{% trans "Promotions" %}</a></li>
