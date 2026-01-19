@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-19 15:26+0100\n"
+"POT-Creation-Date: 2026-01-19 16:02+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
 #: .\apps\accounts\forms.py:14
@@ -21,15 +21,58 @@ msgstr "Пружина"
 msgid "AEG"
 msgstr "Электропневматика (AEG)"
 
-#: .\config\settings.py:143
+#: .\apps\orders\forms.py:13
+#: .\templates\orders\partials\checkout_content.html:48
+msgid "First Name"
+msgstr "Имя"
+
+#: .\apps\orders\forms.py:14
+#: .\templates\orders\partials\checkout_content.html:53
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: .\apps\orders\forms.py:15
+msgid "Email"
+msgstr "Email"
+
+#: .\apps\orders\forms.py:16
+#: .\templates\orders\partials\checkout_content.html:66
+msgid "Phone"
+msgstr "Телефон"
+
+#: .\apps\orders\forms.py:17
+#: .\templates\orders\partials\checkout_content.html:72
+msgid "Address"
+msgstr "Адрес"
+
+#: .\apps\orders\forms.py:18
+#: .\templates\orders\partials\checkout_content.html:79
+msgid "City"
+msgstr "Город"
+
+#: .\apps\orders\forms.py:19
+#: .\templates\orders\partials\checkout_content.html:84
+msgid "Postal Code"
+msgstr "Почтовый индекс"
+
+#: .\apps\orders\forms.py:20
+#: .\templates\orders\partials\checkout_content.html:91
+msgid "Country"
+msgstr "Страна"
+
+#: .\apps\orders\forms.py:21
+msgid "Notes (optional)"
+msgstr "Примечания (необязательно)"
+
+#: .\config\settings.py:144
 msgid "English"
 msgstr ""
 
-#: .\config\settings.py:144
+#: .\config\settings.py:145
 msgid "Polish"
 msgstr ""
 
-#: .\config\settings.py:145
+#: .\config\settings.py:146
 msgid "Russian"
 msgstr ""
 
@@ -57,8 +100,6 @@ msgstr ""
 "            "
 
 #: .\templates\accounts\register.html:4 .\templates\accounts\register.html:39
-
-#| msgid "Login / Register"
 msgid "Register"
 msgstr "Регистрация"
 
@@ -123,6 +164,7 @@ msgid "Information"
 msgstr "Информация"
 
 #: .\templates\base.html:243
+#: .\templates\orders\partials\checkout_content.html:136
 msgid "Shipping"
 msgstr "Доставка"
 
@@ -130,29 +172,25 @@ msgstr "Доставка"
 msgid "Payments"
 msgstr "Оплата"
 
-#: .\templates\base.html:247
+#: .\templates\base.html:256
 msgid "Promotion terms"
 msgstr "Условия акций"
 
-#: .\templates\base.html:249
+#: .\templates\base.html:258
 msgid "Promotions"
 msgstr "Акции"
 
-#: .\templates\base.html:253
+#: .\templates\base.html:262
 msgid "Contact Us"
 msgstr "Свяжитесь с нами"
 
-#: .\templates\base.html:259
+#: .\templates\base.html:268
 msgid "Wholesale:"
 msgstr "Опт:"
 
-#: .\templates\base.html:271
+#: .\templates\base.html:280
 msgid "Powered by"
 msgstr "Работает на"
-
-#: .\templates\base.html:282
-msgid "How can I help?"
-msgstr "Чем я могу помочь?"
 
 # Cart & Wishlist
 #: .\templates\cart\partials\cart_modal.html:23
@@ -164,10 +202,12 @@ msgid "Your cart is empty"
 msgstr "Ваша корзина пуста"
 
 #: .\templates\cart\partials\cart_modal.html:84
+#: .\templates\orders\partials\checkout_content.html:140
 msgid "Total"
 msgstr "Итого"
 
 #: .\templates\cart\partials\cart_modal.html:89
+#: .\templates\orders\partials\checkout_content.html:9
 msgid "Checkout"
 msgstr "Оформить заказ"
 
@@ -243,6 +283,38 @@ msgstr "Производитель"
 msgid "Currency:"
 msgstr "Валюта:"
 
+#: .\templates\orders\partials\checkout_content.html:39
+msgid "Billing Details"
+msgstr "Платежные данные"
+
+#: .\templates\orders\partials\checkout_content.html:60
+msgid "Email Address"
+msgstr "Email адрес"
+
+#: .\templates\orders\partials\checkout_content.html:97
+msgid "Order Notes"
+msgstr "Примечания к заказу"
+
+#: .\templates\orders\partials\checkout_content.html:107
+msgid "Proceed to Payment"
+msgstr "Перейти к оплате"
+
+#: .\templates\orders\partials\checkout_content.html:110
+msgid "By proceeding, you will be redirected to our secure payment partner."
+msgstr "При продолжении вы будете перенаправлены к нашему партнеру по безопасным платежам."
+
+#: .\templates\orders\partials\checkout_content.html:118
+msgid "Your Order"
+msgstr "Ваш заказ"
+
+#: .\templates\orders\partials\checkout_content.html:124
+msgid "Qty"
+msgstr "Кол-во"
+
+#: .\templates\orders\partials\checkout_content.html:132
+msgid "Subtotal"
+msgstr "Подытог"
+
 #: .\templates\wishlist\partials\wishlist_body.html:4
 msgid "Wishlist"
 msgstr "Список желаний"
@@ -283,11 +355,14 @@ msgstr "Просмотрите наш каталог и добавьте пон�
 msgid "Start Shopping"
 msgstr "Начать покупки"
 
+#~ msgid "How can I help?"
+#~ msgstr "Чем я могу помочь?"
+
 #~ msgid "Compare"
 #~ msgstr "Сравнение"
 
-msgid "Returns and complaints"
-msgstr "Возврат и рекламации"
+#~ msgid "Returns and complaints"
+#~ msgstr "Возврат и рекламации"
 
 # New Categories
 #~ msgid "Machine Guns"
