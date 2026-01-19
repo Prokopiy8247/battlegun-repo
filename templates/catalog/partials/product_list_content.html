@@ -55,8 +55,8 @@
 
         <div class="mt-auto">
             <div class="flex items-center justify-between text-[10px] text-gray-500 mb-3">
-                <div>{% trans "Producer" %}: <span class="font-bold text-gray-800">{{ product.brand|default:na_text
-                        }}</span></div>
+                <div>{% trans "Producer" %}: <span class="font-bold text-gray-800">{{ product.brand_display }}</span>
+                </div>
                 <div class="flex items-center">
                     <div class="flex items-center mr-1 text-gray-300">
                         <!-- Star placeholder (0 reviews) -->

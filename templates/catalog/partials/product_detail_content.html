@@ -28,8 +28,8 @@
                 <!-- Fixed Variable Case -->
                 <div class="text-xs text-gray-500 font-bold tracking-wider mb-2">{{ product.brand }}</div>
                 <h1 class="text-3xl font-black uppercase tracking-tight mb-2">{{ product.name }}</h1>
-                <div class="text-[10px] text-gray-400 mb-4">{% trans "Product code" %}: {{
-                    product.sku|default:product.id }}</div>
+                <div class="text-[10px] text-gray-400 mb-4">{% trans "Product code" %}: {{ product.sku_display }}
+                </div>
 
                 <div class="flex items-baseline space-x-4 mb-6">
                     <span class="text-4xl font-black">{{ product.price|currency:request }}</span>

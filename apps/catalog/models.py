@@ -56,6 +56,14 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def brand_display(self):
+        return self.brand if self.brand else "-"
+
+    @property
+    def sku_display(self):
+        return self.sku if self.sku else str(self.id)
     
     def save(self, *args, **kwargs):
         if not self.slug:
