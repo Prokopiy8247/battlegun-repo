@@ -248,14 +248,14 @@ msgstr "Zacznij zakupy"
 #~ msgstr "Katalog"
 
 # Common Specs Values
-#~ msgid "Gas"
-#~ msgstr "Gaz"
+msgid "Gas"
+msgstr "Gaz"
 
-#~ msgid "Spring"
-#~ msgstr "Sprężyna"
+msgid "Spring"
+msgstr "Sprężyna"
 
-#~ msgid "AEG"
-#~ msgstr "Elektryczne (AEG)"
+msgid "AEG"
+msgstr "Elektryczne (AEG)"
 
 #~ msgid "Metal"
 #~ msgstr "Metal"

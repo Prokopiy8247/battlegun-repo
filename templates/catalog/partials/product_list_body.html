@@ -32,15 +32,14 @@
                                 <div class="space-y-3">
                                     {% for ps in all_power_supplies %}
                                     <label class="flex items-center space-x-3 cursor-pointer group">
-                                        {% if ps in selected_power_supplies %}
-                                        <input type="checkbox" name="power_supply" value="{{ ps }}" checked
+                                        {% if ps.value in selected_power_supplies %}
+                                        <input type="checkbox" name="power_supply" value="{{ ps.value }}" checked
                                             class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
                                         {% else %}
-                                        <input type="checkbox" name="power_supply" value="{{ ps }}"
+                                        <input type="checkbox" name="power_supply" value="{{ ps.value }}"
                                             class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
                                         {% endif %}
-                                        <span class="text-xs text-gray-600 group-hover:text-black">{{ ps|trans_str
-                                            }}</span>
+                                        <span class="text-xs text-gray-600 group-hover:text-black">{{ ps.label }}</span>
                                     </label>
                                     {% endfor %}
                                 </div>

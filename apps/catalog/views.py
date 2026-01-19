@@ -21,7 +21,7 @@ def product_list(request, category_slug=None):
     # Filter by Power Supply
     power_supplies = request.GET.getlist('power_supply')
     if power_supplies:
-        products = products.filter(power_supply__in=power_supplies)
+        products = products.filter(power_supply_en__in=power_supplies)
 
     # Filter by Manufacturer
     manufacturers = request.GET.getlist('manufacturer')
@@ -29,7 +29,12 @@ def product_list(request, category_slug=None):
         products = products.filter(brand__in=manufacturers)
 
     # Constants for filtering
-    ALL_POWER_SUPPLIES = ['Gas', 'Spring', 'AEG']
+    from django.utils.translation import gettext as _
+    ALL_POWER_SUPPLIES = [
+        {'value': 'Gas/CO2', 'label': _('Gas')},
+        {'value': 'Spring', 'label': _('Spring')},
+        {'value': 'AEG', 'label': _('AEG')},
+    ]
     ALL_MANUFACTURERS = [
         'SPECNA ARMS', 'GOLDEN EAGLE', 'DOUBLE BELL', 'CYMA', 'A&K', 
         'ARCTURUS', 'E&C', 'UMAREX', 'SRC', 'NUPROL'
