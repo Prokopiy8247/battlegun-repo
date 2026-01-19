@@ -229,6 +229,17 @@
 
         <!-- MAIN CONTENT -->
         <main class="flex-grow" id="main-content">
+            {% if messages %}
+            <div class="container mx-auto px-4 mt-4">
+                {% for message in messages %}
+                <div class="p-4 mb-4 text-sm text-white rounded-lg {% if message.tags == 'error' %}bg-red-600{% elif message.tags == 'success' %}bg-green-600{% elif message.tags == 'warning' %}bg-yellow-500{% else %}bg-blue-600{% endif %}"
+                    role="alert">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
             {% block content %}
             {% endblock %}
         </main>
