@@ -10,6 +10,20 @@ class CustomLoginView(LoginView):
     authentication_form = CustomAuthenticationForm
     redirect_authenticated_user = True
 
+    def form_valid(self, form):
+        # Capture session key before login (which cycles the key)
+        old_session_key = self.request.session.session_key
+        
+        # Log the user in
+        response = super().form_valid(form)
+        
+        # Merge carts
+        if old_session_key:
+             from services.cart_service import CartService
+             CartService.merge_carts_after_login(self.request, old_session_key, self.request.user)
+             
+        return response
+
 class RegisterView(CreateView):
     form_class = CustomUserCreationForm
     template_name = 'accounts/register.html'

@@ -12,6 +12,14 @@ from core.utils import is_htmx
 from services.tasks import send_order_created_email
 
 def checkout(request):
+    if not request.user.is_authenticated:
+        login_url = reverse('login') + f'?next={request.path}'
+        if is_htmx(request):
+            response = HttpResponse()
+            response['HX-Redirect'] = login_url
+            return response
+        return redirect(login_url)
+
     cart = CartService.get_cart_from_session(request)
     if not cart.items.exists():
         messages.warning(request, "Your cart is empty.")
