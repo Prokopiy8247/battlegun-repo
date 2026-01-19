@@ -35,11 +35,11 @@ msgstr ""
 
 #: .\templates\accounts\login.html:4 .\templates\accounts\login.html:9
 msgid "Login"
-msgstr ""
+msgstr "Вход"
 
 #: .\templates\accounts\login.html:38
 msgid "Sign In"
-msgstr ""
+msgstr "Войти"
 
 #: .\templates\accounts\login.html:44
 #, python-format
