@@ -1,20 +1,83 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-18 16:31+0100\n"
+"POT-Creation-Date: 2026-01-19 15:29+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
-#: .\config\settings.py:146
+#: .\apps\accounts\forms.py:14
+msgid "Letters, digits and @/./+/-/_ only."
+msgstr "Tylko litery, cyfry i znaki @/./+/-/_."
+
+# Common Specs Values
+#: .\apps\catalog\views.py:34
+msgid "Gas"
+msgstr "Gaz"
+
+#: .\apps\catalog\views.py:35
+msgid "Spring"
+msgstr "Sprężyna"
+
+#: .\apps\catalog\views.py:36
+msgid "AEG"
+msgstr "Elektryczne (AEG)"
+
+#: .\config\settings.py:143
 msgid "English"
 msgstr ""
 
-#: .\config\settings.py:147
+#: .\config\settings.py:144
 msgid "Polish"
 msgstr ""
 
-#: .\config\settings.py:148
+#: .\config\settings.py:145
 msgid "Russian"
 msgstr ""
+
+#: .\templates\accounts\login.html:4 .\templates\accounts\login.html:9
+msgid "Login"
+msgstr ""
+
+#: .\templates\accounts\login.html:38
+msgid "Sign In"
+msgstr ""
+
+#: .\templates\accounts\login.html:44
+#, python-format
+msgid ""
+"\n"
+"            Don't have an account? <a href=\"%(register_url)s\"\n"
+"                class=\"text-orange-600 hover:text-orange-800 font-"
+"semibold\">Register here</a>\n"
+"            "
+msgstr ""
+"\n"
+"            Nie masz konta? <a href=\"%(register_url)s\"\n"
+"                class=\"text-orange-600 hover:text-orange-800 font-"
+"semibold\">Zarejestruj się tutaj</a>\n"
+"            "
+
+#: .\templates\accounts\register.html:4 .\templates\accounts\register.html:39
+msgid "Register"
+msgstr "Rejestracja"
+
+#: .\templates\accounts\register.html:9
+msgid "Create Account"
+msgstr "Utwórz konto"
+
+#: .\templates\accounts\register.html:45
+#, python-format
+msgid ""
+"\n"
+"            Already have an account? <a href=\"%(login_url)s\"\n"
+"                class=\"text-orange-600 hover:text-orange-800 font-"
+"semibold\">Login here</a>\n"
+"            "
+msgstr ""
+"\n"
+"            Masz już konto? <a href=\"%(login_url)s\"\n"
+"                class=\"text-orange-600 hover:text-orange-800 font-"
+"semibold\">Zaloguj się tutaj</a>\n"
+"            "
 
 #: .\templates\base.html:70
 msgid "Contact"
@@ -28,68 +91,64 @@ msgstr "Formularz kontaktowy"
 msgid "Best airsoft guns!"
 msgstr "Najlepsze karabiny ASG!"
 
-#: .\templates\base.html:92
-msgid "Currency:"
-msgstr "Waluta:"
-
-#: .\templates\base.html:122
+#: .\templates\base.html:90
 msgid "Language:"
 msgstr "Język:"
 
-#: .\templates\base.html:189
+#: .\templates\base.html:157
 msgid "Find product"
 msgstr "Szukaj produktu"
 
-#: .\templates\base.html:195
-#: .\templates\catalog\partials\product_list_body.html:84
+#: .\templates\base.html:163
+#: .\templates\catalog\partials\product_list_body.html:83
 msgid "Search"
 msgstr "Szukaj"
 
-#: .\templates\base.html:203
+#: .\templates\base.html:174
+msgid "Logout"
+msgstr ""
+
+#: .\templates\base.html:180
 msgid "Login / Register"
 msgstr "Zaloguj / Zarejestruj"
 
-#: .\templates\base.html:207
-msgid "Compare"
-msgstr "Porównaj"
-
-#: .\templates\base.html:212
+#: .\templates\base.html:188
 msgid "Wish list"
 msgstr "Lista życzeń"
 
-#: .\templates\base.html:265
+#: .\templates\base.html:241
 msgid "Information"
 msgstr "Informacje"
 
-#: .\templates\base.html:267
+#: .\templates\base.html:243
 msgid "Shipping"
 msgstr "Wysyłka"
 
-#: .\templates\base.html:268
+#: .\templates\base.html:244
 msgid "Payments"
 msgstr "Płatności"
 
-#: .\templates\base.html:271
+#: .\templates\base.html:247
 msgid "Promotion terms"
 msgstr "Regulamin promocji"
 
-#: .\templates\base.html:273
+#: .\templates\base.html:249
 msgid "Promotions"
 msgstr "Promocje"
 
-#: .\templates\base.html:277
+#: .\templates\base.html:253
 msgid "Contact Us"
 msgstr "Kontakt"
 
-#: .\templates\base.html:283
+#: .\templates\base.html:259
 msgid "Wholesale:"
 msgstr "Hurt:"
 
-#: .\templates\base.html:295
+#: .\templates\base.html:271
 msgid "Powered by"
 msgstr "Wspierane przez"
 
-#: .\templates\base.html:306
+#: .\templates\base.html:282
 msgid "How can I help?"
 msgstr "W czym mogę pomóc?"
 
@@ -120,7 +179,7 @@ msgid "Product code"
 msgstr "Kod produktu"
 
 #: .\templates\catalog\partials\product_detail_content.html:47
-#: .\templates\catalog\partials\product_list_content.html:77
+#: .\templates\catalog\partials\product_list_content.html:74
 msgid "Add to basket"
 msgstr "Dodaj do koszyka"
 
@@ -157,7 +216,7 @@ msgid "Airsoft replicas"
 msgstr "Repliki ASG"
 
 #: .\templates\catalog\partials\product_list_body.html:13
-#: .\templates\catalog\partials\product_list_body.html:86
+#: .\templates\catalog\partials\product_list_body.html:85
 msgid "All Products"
 msgstr "Wszystkie produkty"
 
@@ -166,17 +225,21 @@ msgstr "Wszystkie produkty"
 msgid "Power supply"
 msgstr "Zasilanie"
 
-#: .\templates\catalog\partials\product_list_body.html:49
+#: .\templates\catalog\partials\product_list_body.html:48
 msgid "Manufacturer"
 msgstr "Producent"
 
-#: .\templates\catalog\partials\product_list_body.html:68
+#: .\templates\catalog\partials\product_list_body.html:67
 msgid "Show all"
 msgstr "Pokaż wszystko"
 
-#: .\templates\catalog\partials\product_list_content.html:58
+#: .\templates\catalog\partials\product_list_content.html:55
 msgid "Producer"
 msgstr "Producent"
+
+#: .\templates\core\partials\currency_selector.html:8
+msgid "Currency:"
+msgstr "Waluta:"
 
 #: .\templates\wishlist\partials\wishlist_body.html:4
 msgid "Wishlist"
@@ -218,6 +281,9 @@ msgstr "Przeglądaj katalog i dodawaj ulubione produkty!"
 msgid "Start Shopping"
 msgstr "Zacznij zakupy"
 
+#~ msgid "Compare"
+#~ msgstr "Porównaj"
+
 #~ msgid "Returns and complaints"
 #~ msgstr "Zwroty i reklamacje"
 
@@ -246,16 +312,6 @@ msgstr "Zacznij zakupy"
 # Product Detail
 #~ msgid "Catalog"
 #~ msgstr "Katalog"
-
-# Common Specs Values
-msgid "Gas"
-msgstr "Gaz"
-
-msgid "Spring"
-msgstr "Sprężyna"
-
-msgid "AEG"
-msgstr "Elektryczne (AEG)"
 
 #~ msgid "Metal"
 #~ msgstr "Metal"

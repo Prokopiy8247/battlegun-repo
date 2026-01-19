@@ -166,14 +166,22 @@
 
                     <!-- Actions -->
                     <div class="flex items-center space-x-8 text-gray-300">
-                        <button class="flex flex-col items-center hover:text-orange-500 transition-colors">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'logout' %}"
+                            class="flex flex-col items-center hover:text-orange-500 transition-colors"
+                            title="{{ user.username }}">
+                            <i data-lucide="log-out" class="w-5 h-5 text-orange-500"></i>
+                            <span class="text-[10px] mt-1 font-medium text-orange-500">{% trans "Logout" %}</span>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'login' %}"
+                            class="flex flex-col items-center hover:text-orange-500 transition-colors">
                             <i data-lucide="user" class="w-5 h-5"></i>
                             <span class="text-[10px] mt-1 font-medium">{% trans "Login / Register" %}</span>
-                        </button>
-                        <button class="flex flex-col items-center hover:text-orange-500 transition-colors">
-                            <i data-lucide="scale" class="w-5 h-5"></i>
-                            <span class="text-[10px] mt-1 font-medium">{% trans "Compare" %}</span>
-                        </button>
+                        </a>
+                        {% endif %}
+
+
                         <button class="flex flex-col items-center hover:text-orange-500 transition-colors relative"
                             hx-get="{% url 'wishlist_list' %}" hx-target="#main-content" hx-push-url="true">
                             <i data-lucide="heart" class="w-5 h-5"></i>

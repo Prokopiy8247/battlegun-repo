@@ -27,6 +27,7 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('cart/', include('apps.cart.urls')),
+    path('accounts/', include('apps.accounts.urls')),
     path('', include('apps.orders.urls')),
     path('payment/', include('apps.payments.urls')),
     path('wishlist/', include('apps.wishlist.urls')),

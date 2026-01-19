@@ -1,20 +1,85 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-18 16:31+0100\n"
+"POT-Creation-Date: 2026-01-19 15:26+0100\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
-#: .\config\settings.py:146
+#: .\apps\accounts\forms.py:14
+msgid "Letters, digits and @/./+/-/_ only."
+msgstr "Только буквы, цифры и символы @/./+/-/_."
+
+# Common Specs Values
+#: .\apps\catalog\views.py:34
+msgid "Gas"
+msgstr "Газ"
+
+#: .\apps\catalog\views.py:35
+msgid "Spring"
+msgstr "Пружина"
+
+#: .\apps\catalog\views.py:36
+msgid "AEG"
+msgstr "Электропневматика (AEG)"
+
+#: .\config\settings.py:143
 msgid "English"
 msgstr ""
 
-#: .\config\settings.py:147
+#: .\config\settings.py:144
 msgid "Polish"
 msgstr ""
 
-#: .\config\settings.py:148
+#: .\config\settings.py:145
 msgid "Russian"
 msgstr ""
+
+#: .\templates\accounts\login.html:4 .\templates\accounts\login.html:9
+msgid "Login"
+msgstr ""
+
+#: .\templates\accounts\login.html:38
+msgid "Sign In"
+msgstr ""
+
+#: .\templates\accounts\login.html:44
+#, python-format
+msgid ""
+"\n"
+"            Don't have an account? <a href=\"%(register_url)s\"\n"
+"                class=\"text-orange-600 hover:text-orange-800 font-"
+"semibold\">Register here</a>\n"
+"            "
+msgstr ""
+"\n"
+"            Нет аккаунта? <a href=\"%(register_url)s\"\n"
+"                class=\"text-orange-600 hover:text-orange-800 font-"
+"semibold\">Зарегистрируйтесь здесь</a>\n"
+"            "
+
+#: .\templates\accounts\register.html:4 .\templates\accounts\register.html:39
+
+#| msgid "Login / Register"
+msgid "Register"
+msgstr "Регистрация"
+
+#: .\templates\accounts\register.html:9
+msgid "Create Account"
+msgstr "Создать аккаунт"
+
+#: .\templates\accounts\register.html:45
+#, python-format
+msgid ""
+"\n"
+"            Already have an account? <a href=\"%(login_url)s\"\n"
+"                class=\"text-orange-600 hover:text-orange-800 font-"
+"semibold\">Login here</a>\n"
+"            "
+msgstr ""
+"\n"
+"            Уже есть аккаунт? <a href=\"%(login_url)s\"\n"
+"                class=\"text-orange-600 hover:text-orange-800 font-"
+"semibold\">Войдите здесь</a>\n"
+"            "
 
 #: .\templates\base.html:70
 msgid "Contact"
@@ -28,68 +93,64 @@ msgstr "Контактная форма"
 msgid "Best airsoft guns!"
 msgstr "Лучшее страйкбольное оружие!"
 
-#: .\templates\base.html:92
-msgid "Currency:"
-msgstr "Валюта:"
-
-#: .\templates\base.html:122
+#: .\templates\base.html:90
 msgid "Language:"
 msgstr "Язык:"
 
-#: .\templates\base.html:189
+#: .\templates\base.html:157
 msgid "Find product"
 msgstr "Найти товар"
 
-#: .\templates\base.html:195
-#: .\templates\catalog\partials\product_list_body.html:84
+#: .\templates\base.html:163
+#: .\templates\catalog\partials\product_list_body.html:83
 msgid "Search"
 msgstr "Поиск"
 
-#: .\templates\base.html:203
+#: .\templates\base.html:174
+msgid "Logout"
+msgstr ""
+
+#: .\templates\base.html:180
 msgid "Login / Register"
 msgstr "Вход / Регистрация"
 
-#: .\templates\base.html:207
-msgid "Compare"
-msgstr "Сравнение"
-
-#: .\templates\base.html:212
+#: .\templates\base.html:188
 msgid "Wish list"
 msgstr "Список желаний"
 
-#: .\templates\base.html:265
+#: .\templates\base.html:241
 msgid "Information"
 msgstr "Информация"
 
-#: .\templates\base.html:267
+#: .\templates\base.html:243
 msgid "Shipping"
 msgstr "Доставка"
 
-#: .\templates\base.html:268
+#: .\templates\base.html:244
 msgid "Payments"
 msgstr "Оплата"
 
-#: .\templates\base.html:271
+#: .\templates\base.html:247
 msgid "Promotion terms"
 msgstr "Условия акций"
 
-#: .\templates\base.html:273
+#: .\templates\base.html:249
 msgid "Promotions"
 msgstr "Акции"
 
-#: .\templates\base.html:277
+#: .\templates\base.html:253
 msgid "Contact Us"
 msgstr "Свяжитесь с нами"
 
-#: .\templates\base.html:283
+#: .\templates\base.html:259
 msgid "Wholesale:"
 msgstr "Опт:"
 
-#: .\templates\base.html:295
+#: .\templates\base.html:271
 msgid "Powered by"
 msgstr "Работает на"
 
-#: .\templates\base.html:306
+#: .\templates\base.html:282
 msgid "How can I help?"
 msgstr "Чем я могу помочь?"
 
@@ -120,7 +181,7 @@ msgid "Product code"
 msgstr "Код товара"
 
 #: .\templates\catalog\partials\product_detail_content.html:47
-#: .\templates\catalog\partials\product_list_content.html:77
+#: .\templates\catalog\partials\product_list_content.html:74
 msgid "Add to basket"
 msgstr "Добавить в корзину"
 
@@ -157,7 +218,7 @@ msgid "Airsoft replicas"
 msgstr "Страйкбольные привода"
 
 #: .\templates\catalog\partials\product_list_body.html:13
-#: .\templates\catalog\partials\product_list_body.html:86
+#: .\templates\catalog\partials\product_list_body.html:85
 msgid "All Products"
 msgstr "Все товары"
 
@@ -166,17 +227,21 @@ msgstr "Все товары"
 msgid "Power supply"
 msgstr "Тип питания"
 
-#: .\templates\catalog\partials\product_list_body.html:49
+#: .\templates\catalog\partials\product_list_body.html:48
 msgid "Manufacturer"
 msgstr "Производитель"
 
-#: .\templates\catalog\partials\product_list_body.html:68
+#: .\templates\catalog\partials\product_list_body.html:67
 msgid "Show all"
 msgstr "Показать все"
 
-#: .\templates\catalog\partials\product_list_content.html:58
+#: .\templates\catalog\partials\product_list_content.html:55
 msgid "Producer"
 msgstr "Производитель"
+
+#: .\templates\core\partials\currency_selector.html:8
+msgid "Currency:"
+msgstr "Валюта:"
 
 #: .\templates\wishlist\partials\wishlist_body.html:4
 msgid "Wishlist"
@@ -218,6 +283,9 @@ msgstr "Просмотрите наш каталог и добавьте пон�
 msgid "Start Shopping"
 msgstr "Начать покупки"
 
+#~ msgid "Compare"
+#~ msgstr "Сравнение"
+
 #~ msgid "Returns and complaints"
 #~ msgstr "Возврат и рекламации"
 
@@ -246,16 +314,6 @@ msgstr "Начать покупки"
 # Product Detail
 #~ msgid "Catalog"
 #~ msgstr "Каталог"
-
-# Common Specs Values
-msgid "Gas"
-msgstr "Газ"
-
-msgid "Spring"
-msgstr "Пружина"
-
-msgid "AEG"
-msgstr "Электропневматика (AEG)"
 
 #~ msgid "Metal"
 #~ msgstr "Металл"
