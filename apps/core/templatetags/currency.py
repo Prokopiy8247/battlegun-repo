@@ -35,3 +35,20 @@ def currency(value, request=None):
     symbol = settings.CURRENCIES.get(currency_code, {}).get('symbol', currency_code)
     
     return f"{converted_value:.2f} {symbol}"
+
+@register.inclusion_tag('core/partials/currency_selector.html', takes_context=True)
+def currency_selector(context):
+    request = context.get('request')
+    currency_code = settings.DEFAULT_CURRENCY
+    if request:
+        currency_code = request.session.get('currency', settings.DEFAULT_CURRENCY)
+    
+    currency_symbol = settings.CURRENCIES.get(currency_code, {}).get('symbol', '€')
+    
+    return {
+        'request': request,
+        'currency_code': currency_code,
+        'currency_symbol': currency_symbol,
+        'currencies': settings.CURRENCIES,
+        'csrf_token': context.get('csrf_token'),  # We need to pass csrf_token explicitly or use takes_context
+    }
