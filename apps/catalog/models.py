@@ -1,13 +1,14 @@
 import uuid
 from django.db import models
 from django.utils.text import slugify
+from django.core.validators import FileExtensionValidator
 
 class Category(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='categories/', blank=True, null=True)
+    image = models.ImageField(upload_to='categories/', blank=True, null=True, validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'webp'])])
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
     is_active = models.BooleanField(default=True)
     sort_order = models.PositiveIntegerField(default=0)
@@ -74,7 +75,7 @@ class Product(models.Model):
 class ProductImage(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='products/')
+    image = models.ImageField(upload_to='products/', validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'webp'])])
     alt_text = models.CharField(max_length=200)
     is_primary = models.BooleanField(default=False)
     sort_order = models.PositiveIntegerField(default=0)

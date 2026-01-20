@@ -8,6 +8,11 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'email')
+        error_messages = {
+            'username': {
+                'unique': _("This username is not available."),
+            },
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
