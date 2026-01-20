@@ -38,13 +38,13 @@ class Order(TimeStampedModel):
         if not self.order_number:
             # Simple order number generation strategy
             # In production, use a more robust sequence generator
-            import random
+            import secrets
             import string
             # Try to generate unique ID
             while True:
                 prefix = 'ORD'
                 chars = string.ascii_uppercase + string.digits
-                random_str = ''.join(random.choices(chars, k=8))
+                random_str = ''.join(secrets.choice(chars) for _ in range(8))
                 order_number = f"{prefix}-{random_str}"
                 if not Order.objects.filter(order_number=order_number).exists():
                     self.order_number = order_number
