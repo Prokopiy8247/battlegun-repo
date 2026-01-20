@@ -64,13 +64,19 @@ def webhook(request):
 
 def payment_waiting(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
+    if request.user.is_authenticated and order.user != request.user:
+         return HttpResponse("Forbidden", status=403)
     return render(request, 'payments/waiting.html', {'order': order})
 
 def payment_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
+    if request.user.is_authenticated and order.user != request.user:
+         return HttpResponse("Forbidden", status=403)
     return render(request, 'payments/success.html', {'order': order})
 
 def payment_failed(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
+    if request.user.is_authenticated and order.user != request.user:
+         return HttpResponse("Forbidden", status=403)
     return render(request, 'payments/failed.html', {'order': order})
 

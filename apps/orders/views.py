@@ -38,6 +38,7 @@ def checkout(request):
                     order.subtotal = cart.total_price
                     order.total = order.subtotal + order.shipping_cost
                     
+                    order.user = request.user
                     # Ensure unique order number generation if not handled by signal/save override safely
                     # The model save method handles it, so allow it.
                     order.save()
@@ -104,6 +105,8 @@ def checkout(request):
 
 def order_confirmation(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
+    if request.user.is_authenticated and order.user != request.user:
+         return HttpResponse("Forbidden", status=403)
     context = {'order': order, 'is_htmx': is_htmx(request)}
     
     if is_htmx(request):
