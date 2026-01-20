@@ -149,12 +149,12 @@
 
                     <!-- Search Bar -->
                     <form class="flex-1 max-w-2xl flex" hx-get="{% url 'product_list' %}" hx-target="#main-content"
-                        hx-push-url="true" hx-trigger="submit">
+                        hx-push-url="true" hx-trigger="submit, input delay:500ms, search">
                         <div class="relative flex-1">
                             <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                                 <i data-lucide="search" class="text-gray-500 w-4 h-4"></i>
                             </div>
-                            <input type="text" name="q" placeholder="{% trans 'Find product' %}"
+                            <input type="search" name="q" placeholder="{% trans 'Find product' %}"
                                 value="{{ request.GET.q|default:'' }}"
                                 class="w-full bg-[#2a2a2a] text-white border-none rounded-l h-10 pl-10 pr-4 focus:ring-1 focus:ring-orange-500 text-sm outline-none" />
                         </div>
