@@ -1,4 +1,6 @@
-{% load static %}
+{% load currency %}
+{% load i18n %}
+{% load trans_extras %}
 <!-- Product Grid Partial -->
 {% for product in products %}
 <div class="bg-white group relative p-4 flex flex-col h-full border border-gray-200 hover:shadow-xl transition-all">
@@ -6,20 +8,19 @@
     <div class="absolute top-2 left-2 flex flex-col gap-1 z-10">
 
         {% if product.discount_price %}
-        <span class="bg-red-600 text-white text-[9px] font-bold uppercase px-2 py-0.5 rounded-sm">Sale</span>
+        <span class="bg-red-600 text-white text-[9px] font-bold uppercase px-2 py-0.5 rounded-sm">{% trans "Sale"
+            %}</span>
         {% endif %}
     </div>
 
     <!-- Actions Hover -->
     <div class="absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
-        <button
-            class="bg-white/90 hover:bg-orange-500 hover:text-white text-gray-600 p-1.5 rounded shadow-sm transition-colors">
-            <i data-lucide="scale" class="w-3.5 h-3.5"></i>
-        </button>
-        <button
-            class="bg-white/90 hover:bg-orange-500 hover:text-white text-gray-600 p-1.5 rounded shadow-sm transition-colors">
-            <i data-lucide="heart" class="w-3.5 h-3.5"></i>
-        </button>
+
+        {% if product.id in wishlist_product_ids %}
+        {% include "wishlist/partials/wishlist_button.html" with in_wishlist=True %}
+        {% else %}
+        {% include "wishlist/partials/wishlist_button.html" with in_wishlist=False %}
+        {% endif %}
     </div>
 
     <!-- Image -->
@@ -39,9 +40,9 @@
     <!-- Content -->
     <div class="flex-1 flex flex-col">
         <div class="flex items-baseline space-x-2 mb-1">
-            <span class="text-lg font-black">{{ product.price }} €</span>
+            <span class="text-lg font-black">{{ product.price|currency:request }}</span>
             {% if product.discount_price %}
-            <span class="text-xs text-red-600 line-through">{{ product.discount_price }} €</span>
+            <span class="text-xs text-red-600 line-through">{{ product.discount_price|currency:request }}</span>
             {% endif %}
         </div>
         <h3 class="text-[11px] font-medium leading-tight text-gray-800 line-clamp-3 mb-2 min-h-[3rem] cursor-pointer hover:text-orange-500"
@@ -51,7 +52,8 @@
 
         <div class="mt-auto">
             <div class="flex items-center justify-between text-[10px] text-gray-500 mb-3">
-                <div>Producer: <span class="font-bold text-gray-800">{{ product.brand|default:"N/A" }}</span></div>
+                <div>{% trans "Producer" %}: <span class="font-bold text-gray-800">{{ product.brand_display }}</span>
+                </div>
                 <div class="flex items-center">
                     <div class="flex items-center mr-1 text-gray-300">
                         <!-- Star placeholder (0 reviews) -->
@@ -69,7 +71,7 @@
                 class="w-full h-9 flex items-center justify-center space-x-2 rounded transition-all font-bold text-xs uppercase tracking-wider bg-orange-600 hover:bg-orange-700 text-white"
                 hx-post="{% url 'cart_add' product.id %}" hx-target="#cart-modal-container" hx-swap="innerHTML">
                 <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
-                <span>Add to basket</span>
+                <span>{% trans "Add to basket" %}</span>
             </button>
         </div>
     </div>

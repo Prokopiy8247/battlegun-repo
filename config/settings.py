@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from email._header_value_parser import Domain
 from pathlib import Path
+# Reload
+# Reload
+# Reload
+# Reload
 from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -35,6 +39,7 @@ SITE_URL = config('SITE_URL', default='http://localhost:8000')
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,19 +47,24 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.catalog',
-    'core',
+    'apps.core',
     'apps.cart',
     'apps.orders',
     'apps.payments',
+    'apps.wishlist',
+    'apps.accounts',
+    'axes',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'axes.middleware.AxesMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -80,6 +90,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'apps.catalog.context_processors.categories',
                 'apps.cart.context_processors.cart',
+                'apps.wishlist.context_processors.wishlist_count',
+                'apps.core.context_processors.currency',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -115,16 +128,10 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'OPTIONS': {
+            'min_length': 8,
+        }
     },
 ]
 
@@ -132,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -140,12 +147,24 @@ USE_I18N = True
 
 USE_TZ = True
 
+from django.utils.translation import gettext_lazy as _
+
+LANGUAGES = [
+    ('en', _('English')),
+    ('pl', _('Polish')),
+    ('ru', _('Russian')),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
@@ -182,6 +201,7 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_ALWAYS_EAGER = True
 
 # Redis Caching Configuration
 CACHES = {
@@ -206,4 +226,29 @@ if not DEBUG:
     X_FRAME_OPTIONS = 'DENY'
     ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
     CSRF_TRUSTED_ORIGINS = [f'https://{host}' for host in ALLOWED_HOSTS]
+
+# Currency Settings
+DEFAULT_CURRENCY = 'EUR'
+CURRENCIES = {
+    'EUR': {'symbol': '€', 'name': 'Euro'},
+    'USD': {'symbol': '$', 'name': 'US Dollar'},
+    'PLN': {'symbol': 'zł', 'name': 'Polish Zloty'},
+}
+EXCHANGE_RATES = {
+    'EUR': 1.0,
+    'USD': 1.08,  # Example rate
+    'PLN': 4.25,  # Example rate
+}
+
+# Authentication
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesStandaloneBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+AXES_FAILURE_LIMIT = 5
+AXES_COOLOFF_TIME = 1 # hour
 

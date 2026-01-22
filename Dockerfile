@@ -1,30 +1,51 @@
-FROM python:3.12-slim
+# Use official Python image
+FROM python:3.11-slim
 
 # Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-# Set work directory
+# Set working directory
 WORKDIR /app
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     gcc \
     libpq-dev \
+    netcat-openbsd \
     && rm -rf /var/lib/apt/lists/*
 
-# Install python dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Install dependencies
+COPY requirements.txt /app/
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Copy project
-COPY . .
+COPY . /app/
 
-# Run collectstatic
-RUN python manage.py collectstatic --noinput
+# Create directory for static files
+RUN mkdir -p /app/staticfiles && mkdir -p /app/media
 
-# Expose port (internal use only)
-EXPOSE 8000
+# Entrypoint script to handle startup tasks (optional but good practice)
+COPY <<EOF /entrypoint.sh
+#!/bin/sh
 
-# Default command
+if [ "\$DATABASE" = "postgres" ]
+then
+    echo "Waiting for postgres..."
+    while ! nc -z \$POSTGRES_HOST \$POSTGRES_PORT; do
+      sleep 0.1
+    done
+    echo "PostgreSQL started"
+fi
+
+python manage.py collectstatic --noinput
+
+exec "\$@"
+EOF
+
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+
+# Start Gunicorn
 CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000"]

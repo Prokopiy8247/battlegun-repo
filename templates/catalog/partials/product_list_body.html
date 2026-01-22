@@ -1,11 +1,18 @@
+{% load i18n %}
+{% load trans_extras %}
 <div id="page-category" class="page-section">
     <div class="bg-white min-h-screen">
         <div class="container mx-auto px-4 py-8">
             <div class="text-[10px] text-gray-500 mb-8 flex items-center space-x-2">
-                <span>Airsoft replicas</span>
+                <span>{% trans "Airsoft replicas" %}</span>
                 <span>»</span>
-                <span class="text-black font-bold">{% if current_category %}{{ current_category.name }}{% else %}All
-                    Products{% endif %}</span>
+                <span class="text-black font-bold">
+                    {% if current_category %}
+                    {{ current_category.name|trans_str }}
+                    {% else %}
+                    {% trans "All Products" %}
+                    {% endif %}
+                </span>
             </div>
 
             <div class="grid grid-cols-12 gap-8">
@@ -13,41 +20,56 @@
 
                 <!-- Sidebar -->
                 <aside class="col-span-12 lg:col-span-3">
-                    <div class="space-y-8">
-                        <div>
-                            <h3 class="text-xl font-black uppercase mb-4 tracking-tight">Power supply</h3>
-                            <div class="space-y-3">
-                                <label class="flex items-center space-x-3 cursor-pointer group">
-                                    <input type="checkbox"
-                                        class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
-                                    <span class="text-xs text-gray-600 group-hover:text-black">Gas</span>
-                                </label>
-                                <label class="flex items-center space-x-3 cursor-pointer group">
-                                    <input type="checkbox"
-                                        class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
-                                    <span class="text-xs text-gray-600 group-hover:text-black">AEG</span>
-                                </label>
+                    <form hx-get="." hx-trigger="change" hx-target="#category-grid" hx-push-url="true">
+                        {% if request.GET.q %}
+                        <input type="hidden" name="q" value="{{ request.GET.q }}">
+                        {% endif %}
+
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="text-xl font-black uppercase mb-4 tracking-tight">{% trans "Power supply" %}
+                                </h3>
+                                <div class="space-y-3">
+                                    {% for ps in all_power_supplies %}
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        {% if ps.value in selected_power_supplies %}
+                                        <input type="checkbox" name="power_supply" value="{{ ps.value }}" checked
+                                            class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
+                                        {% else %}
+                                        <input type="checkbox" name="power_supply" value="{{ ps.value }}"
+                                            class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
+                                        {% endif %}
+                                        <span class="text-xs text-gray-600 group-hover:text-black">{{ ps.label }}</span>
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-black uppercase mb-4 tracking-tight">{% trans "Manufacturer" %}
+                                </h3>
+                                <div class="space-y-3">
+                                    {% for m in all_manufacturers %}
+                                    <label class="flex items-center space-x-3 cursor-pointer group">
+                                        {% if m in selected_manufacturers %}
+                                        <input type="checkbox" name="manufacturer" value="{{ m }}" checked
+                                            class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
+                                        {% else %}
+                                        <input type="checkbox" name="manufacturer" value="{{ m }}"
+                                            class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
+                                        {% endif %}
+                                        <span class="text-xs text-gray-600 group-hover:text-black">{{ m }}</span>
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                                <div class="mt-8">
+                                    <a href="."
+                                        class="inline-block bg-[#2a2a2a] text-white text-[10px] font-bold uppercase tracking-widest px-6 py-2 hover:bg-black transition-colors">
+                                        {% trans "Show all" %}
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            <h3 class="text-xl font-black uppercase mb-4 tracking-tight">Manufacturer</h3>
-                            <div class="space-y-3">
-                                <label class="flex items-center space-x-3 cursor-pointer group">
-                                    <input type="checkbox"
-                                        class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
-                                    <span class="text-xs text-gray-600 group-hover:text-black">Specna Arms</span>
-                                </label>
-                                <label class="flex items-center space-x-3 cursor-pointer group">
-                                    <input type="checkbox"
-                                        class="w-4 h-4 rounded border-gray-300 text-orange-600 focus:ring-orange-600" />
-                                    <span class="text-xs text-gray-600 group-hover:text-black">E&C</span>
-                                </label>
-                            </div>
-                            <button
-                                class="mt-4 bg-[#2a2a2a] text-white text-[10px] font-bold uppercase tracking-widest px-6 py-2">Show
-                                all</button>
-                        </div>
-                    </div>
+                    </form>
                 </aside>
 
                 <!-- Listing -->
@@ -56,11 +78,11 @@
                     <div class="mb-8">
                         <h1 class="text-3xl font-black tracking-tighter mb-4">
                             {% if current_category %}
-                            {{ current_category.name }}
+                            {{ current_category.name|trans_str }}
                             {% elif request.GET.q %}
-                            Search: "{{ request.GET.q }}"
+                            {% trans "Search" %}: "{{ request.GET.q }}"
                             {% else %}
-                            All Products
+                            {% trans "All Products" %}
                             {% endif %}
                         </h1>
                     </div>

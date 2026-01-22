@@ -1,0 +1,397 @@
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-19 16:02+0100\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: .\apps\accounts\forms.py:14
+msgid "Letters, digits and @/./+/-/_ only."
+msgstr "Tylko litery, cyfry i znaki @/./+/-/_."
+
+# Common Specs Values
+#: .\apps\catalog\views.py:34
+msgid "Gas"
+msgstr "Gaz"
+
+#: .\apps\catalog\views.py:35
+msgid "Spring"
+msgstr "Sprężyna"
+
+#: .\apps\catalog\views.py:36
+msgid "AEG"
+msgstr "Elektryczne (AEG)"
+
+#: .\apps\orders\forms.py:13
+#: .\templates\orders\partials\checkout_content.html:48
+msgid "First Name"
+msgstr "Imię"
+
+#: .\apps\orders\forms.py:14
+#: .\templates\orders\partials\checkout_content.html:53
+msgid "Last Name"
+msgstr "Nazwisko"
+
+#: .\apps\orders\forms.py:15
+msgid "Email"
+msgstr "Email"
+
+#: .\apps\orders\forms.py:16
+#: .\templates\orders\partials\checkout_content.html:66
+msgid "Phone"
+msgstr "Telefon"
+
+#: .\apps\orders\forms.py:17
+#: .\templates\orders\partials\checkout_content.html:72
+msgid "Address"
+msgstr "Adres"
+
+#: .\apps\orders\forms.py:18
+#: .\templates\orders\partials\checkout_content.html:79
+msgid "City"
+msgstr "Miasto"
+
+#: .\apps\orders\forms.py:19
+#: .\templates\orders\partials\checkout_content.html:84
+msgid "Postal Code"
+msgstr "Kod pocztowy"
+
+#: .\apps\orders\forms.py:20
+#: .\templates\orders\partials\checkout_content.html:91
+msgid "Country"
+msgstr "Kraj"
+
+#: .\apps\orders\forms.py:21
+msgid "Notes (optional)"
+msgstr "Uwagi (opcjonalne)"
+
+#: .\config\settings.py:144
+msgid "English"
+msgstr ""
+
+#: .\config\settings.py:145
+msgid "Polish"
+msgstr ""
+
+#: .\config\settings.py:146
+msgid "Russian"
+msgstr ""
+
+#: .\templates\accounts\login.html:4 .\templates\accounts\login.html:9
+msgid "Login"
+msgstr "Logowanie"
+
+#: .\templates\accounts\login.html:38
+msgid "Sign In"
+msgstr "Zaloguj się"
+
+#: .\templates\accounts\login.html:44
+#, python-format
+msgid ""
+"\n"
+"            Don't have an account? <a href=\"%(register_url)s\"\n"
+"                class=\"text-orange-600 hover:text-orange-800 font-"
+"semibold\">Register here</a>\n"
+"            "
+msgstr ""
+"\n"
+"            Nie masz konta? <a href=\"%(register_url)s\"\n"
+"                class=\"text-orange-600 hover:text-orange-800 font-"
+"semibold\">Zarejestruj się tutaj</a>\n"
+"            "
+
+#: .\templates\accounts\register.html:4 .\templates\accounts\register.html:39
+msgid "Register"
+msgstr "Rejestracja"
+
+#: .\templates\accounts\register.html:9
+msgid "Create Account"
+msgstr "Utwórz konto"
+
+#: .\templates\accounts\register.html:45
+#, python-format
+msgid ""
+"\n"
+"            Already have an account? <a href=\"%(login_url)s\"\n"
+"                class=\"text-orange-600 hover:text-orange-800 font-"
+"semibold\">Login here</a>\n"
+"            "
+msgstr ""
+"\n"
+"            Masz już konto? <a href=\"%(login_url)s\"\n"
+"                class=\"text-orange-600 hover:text-orange-800 font-"
+"semibold\">Zaloguj się tutaj</a>\n"
+"            "
+
+#: .\templates\base.html:70
+msgid "Contact"
+msgstr "Kontakt"
+
+#: .\templates\base.html:74
+msgid "Contact form"
+msgstr "Formularz kontaktowy"
+
+#: .\templates\base.html:80
+msgid "Best airsoft guns!"
+msgstr "Najlepsze karabiny ASG!"
+
+#: .\templates\base.html:90
+msgid "Language:"
+msgstr "Język:"
+
+#: .\templates\base.html:157
+msgid "Find product"
+msgstr "Szukaj produktu"
+
+#: .\templates\base.html:163
+#: .\templates\catalog\partials\product_list_body.html:83
+msgid "Search"
+msgstr "Szukaj"
+
+#: .\templates\base.html:174
+msgid "Logout"
+msgstr ""
+
+#: .\templates\base.html:180
+msgid "Login / Register"
+msgstr "Zaloguj / Zarejestruj"
+
+#: .\templates\base.html:188
+msgid "Wish list"
+msgstr "Lista życzeń"
+
+#: .\templates\base.html:241
+msgid "Information"
+msgstr "Informacje"
+
+#: .\templates\base.html:243
+#: .\templates\orders\partials\checkout_content.html:136
+msgid "Shipping"
+msgstr "Wysyłka"
+
+#: .\templates\base.html:244
+msgid "Payments"
+msgstr "Płatności"
+
+#: .\templates\base.html:256
+msgid "Promotion terms"
+msgstr "Regulamin promocji"
+
+#: .\templates\base.html:258
+msgid "Promotions"
+msgstr "Promocje"
+
+#: .\templates\base.html:262
+msgid "Contact Us"
+msgstr "Kontakt"
+
+#: .\templates\base.html:268
+msgid "Wholesale:"
+msgstr "Hurt:"
+
+#: .\templates\base.html:280
+msgid "Powered by"
+msgstr "Wspierane przez"
+
+# Cart & Wishlist
+#: .\templates\cart\partials\cart_modal.html:23
+msgid "Shopping Cart"
+msgstr "Koszyk"
+
+#: .\templates\cart\partials\cart_modal.html:76
+msgid "Your cart is empty"
+msgstr "Twój koszyk jest pusty"
+
+#: .\templates\cart\partials\cart_modal.html:84
+#: .\templates\orders\partials\checkout_content.html:140
+msgid "Total"
+msgstr "Suma"
+
+#: .\templates\cart\partials\cart_modal.html:89
+#: .\templates\orders\partials\checkout_content.html:9
+msgid "Checkout"
+msgstr "Do kasy"
+
+#: .\templates\catalog\partials\product_detail_content.html:19
+msgid "Sale"
+msgstr "Wyprzedaż"
+
+#: .\templates\catalog\partials\product_detail_content.html:31
+#: .\templates\wishlist\partials\wishlist_body.html:39
+msgid "Product code"
+msgstr "Kod produktu"
+
+#: .\templates\catalog\partials\product_detail_content.html:47
+#: .\templates\catalog\partials\product_list_content.html:74
+msgid "Add to basket"
+msgstr "Dodaj do koszyka"
+
+#: .\templates\catalog\partials\product_detail_content.html:53
+msgid "Specifications"
+msgstr "Specyfikacja"
+
+#: .\templates\catalog\partials\product_detail_content.html:55
+msgid "Power Source"
+msgstr "Napęd"
+
+#: .\templates\catalog\partials\product_detail_content.html:58
+msgid "FPS"
+msgstr "Prędkość wylotowa (FPS)"
+
+#: .\templates\catalog\partials\product_detail_content.html:61
+msgid "Material"
+msgstr "Materiał"
+
+#: .\templates\catalog\partials\product_detail_content.html:64
+msgid "Color"
+msgstr "Kolor"
+
+#: .\templates\catalog\partials\product_detail_content.html:67
+msgid "Weight"
+msgstr "Waga"
+
+#: .\templates\catalog\partials\product_detail_content.html:74
+msgid "Description"
+msgstr "Opis"
+
+#: .\templates\catalog\partials\product_list_body.html:7
+msgid "Airsoft replicas"
+msgstr "Repliki ASG"
+
+#: .\templates\catalog\partials\product_list_body.html:13
+#: .\templates\catalog\partials\product_list_body.html:85
+msgid "All Products"
+msgstr "Wszystkie produkty"
+
+# Filters & UI
+#: .\templates\catalog\partials\product_list_body.html:30
+msgid "Power supply"
+msgstr "Zasilanie"
+
+#: .\templates\catalog\partials\product_list_body.html:48
+msgid "Manufacturer"
+msgstr "Producent"
+
+#: .\templates\catalog\partials\product_list_body.html:67
+msgid "Show all"
+msgstr "Pokaż wszystko"
+
+#: .\templates\catalog\partials\product_list_content.html:55
+msgid "Producer"
+msgstr "Producent"
+
+#: .\templates\core\partials\currency_selector.html:8
+msgid "Currency:"
+msgstr "Waluta:"
+
+#: .\templates\orders\partials\checkout_content.html:39
+msgid "Billing Details"
+msgstr "Dane do faktury"
+
+#: .\templates\orders\partials\checkout_content.html:60
+msgid "Email Address"
+msgstr "Adres e-mail"
+
+#: .\templates\orders\partials\checkout_content.html:97
+msgid "Order Notes"
+msgstr "Uwagi do zamówienia"
+
+#: .\templates\orders\partials\checkout_content.html:107
+msgid "Proceed to Payment"
+msgstr "Przejdź do płatności"
+
+#: .\templates\orders\partials\checkout_content.html:110
+msgid "By proceeding, you will be redirected to our secure payment partner."
+msgstr "Kontynuując, zostaniesz przekierowany do naszego bezpiecznego partnera płatniczego."
+
+#: .\templates\orders\partials\checkout_content.html:118
+msgid "Your Order"
+msgstr "Twoje zamówienie"
+
+#: .\templates\orders\partials\checkout_content.html:124
+msgid "Qty"
+msgstr "Il."
+
+#: .\templates\orders\partials\checkout_content.html:132
+msgid "Subtotal"
+msgstr "Suma częściowa"
+
+#: .\templates\wishlist\partials\wishlist_body.html:4
+msgid "Wishlist"
+msgstr "Lista życzeń"
+
+#: .\templates\wishlist\partials\wishlist_body.html:11
+msgid "Product"
+msgstr "Produkt"
+
+#: .\templates\wishlist\partials\wishlist_body.html:12
+msgid "Added on"
+msgstr "Dodano"
+
+#: .\templates\wishlist\partials\wishlist_body.html:13
+msgid "Unit price"
+msgstr "Cena jednostkowa"
+
+#: .\templates\wishlist\partials\wishlist_body.html:14
+msgid "Actions"
+msgstr "Działania"
+
+#: .\templates\wishlist\partials\wishlist_body.html:56
+msgid "Buy now"
+msgstr "Kup teraz"
+
+#: .\templates\wishlist\partials\wishlist_body.html:62
+msgid "Remove from the list"
+msgstr "Usuń z listy"
+
+#: .\templates\wishlist\partials\wishlist_body.html:74
+msgid "Your wishlist is empty"
+msgstr "Twoja lista życzeń jest pusta"
+
+#: .\templates\wishlist\partials\wishlist_body.html:75
+msgid "Browse our catalog and add items you like!"
+msgstr "Przeglądaj katalog i dodawaj ulubione produkty!"
+
+#: .\templates\wishlist\partials\wishlist_body.html:78
+msgid "Start Shopping"
+msgstr "Zacznij zakupy"
+
+#~ msgid "How can I help?"
+#~ msgstr "W czym mogę pomóc?"
+
+#~ msgid "Compare"
+#~ msgstr "Porównaj"
+
+#~ msgid "Returns and complaints"
+#~ msgstr "Zwroty i reklamacje"
+
+# New Categories
+#~ msgid "Machine Guns"
+#~ msgstr "Karabiny maszynowe"
+
+#~ msgid "Pistols"
+#~ msgstr "Pistolety"
+
+#~ msgid "Rifles"
+#~ msgstr "Karabiny"
+
+#~ msgid "Shotguns"
+#~ msgstr "Strzelby"
+
+#~ msgid "Sniper Rifles"
+#~ msgstr "Karabiny snajperskie"
+
+#~ msgid "Assault Rifles"
+#~ msgstr "Karabiny szturmowe"
+
+#~ msgid "Submachine Guns"
+#~ msgstr "Pistolety maszynowe"
+
+# Product Detail
+#~ msgid "Catalog"
+#~ msgstr "Katalog"
+
+#~ msgid "Metal"
+#~ msgstr "Metal"
+
+#~ msgid "Polymer"
+#~ msgstr "Polimer"

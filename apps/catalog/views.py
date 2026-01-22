@@ -8,6 +8,18 @@ def is_htmx(request):
     return request.headers.get('HX-Request') == 'true'
 
 def product_list(request, category_slug=None):
+    # Constants for filtering
+    from django.utils.translation import gettext as _
+    ALL_POWER_SUPPLIES = [
+        {'value': 'Gas/CO2', 'label': _('Gas')},
+        {'value': 'Spring', 'label': _('Spring')},
+        {'value': 'AEG', 'label': _('AEG')},
+    ]
+    ALL_MANUFACTURERS = [
+        'SPECNA ARMS', 'GOLDEN EAGLE', 'DOUBLE BELL', 'CYMA', 'A&K', 
+        'ARCTURUS', 'E&C', 'UMAREX', 'SRC', 'NUPROL'
+    ]
+
     products = Product.objects.filter(is_active=True).order_by('-created_at').prefetch_related('images')
     current_category = None
     
@@ -19,9 +31,38 @@ def product_list(request, category_slug=None):
     if query:
         products = products.filter(Q(name__icontains=query) | Q(description__icontains=query))
 
+    # Filter by Power Supply
+    power_supplies = request.GET.getlist('power_supply')
+    if power_supplies:
+        valid_values = [item['value'] for item in ALL_POWER_SUPPLIES]
+        power_supplies = [p for p in power_supplies if p in valid_values]
+        if power_supplies:
+            products = products.filter(power_supply_en__in=power_supplies)
+
+    # Filter by Manufacturer
+    manufacturers = request.GET.getlist('manufacturer')
+    if manufacturers:
+        manufacturers = [m for m in manufacturers if m in ALL_MANUFACTURERS]
+        if manufacturers:
+            products = products.filter(brand__in=manufacturers)
+
+
+    # Wishlist IDs
+    wishlist_product_ids = []
+    if request.user.is_authenticated:
+        wishlist_product_ids = list(request.user.wishlist.values_list('product_id', flat=True))
+    elif request.session.session_key:
+        from apps.wishlist.models import WishlistItem
+        wishlist_product_ids = list(WishlistItem.objects.filter(session_key=request.session.session_key).values_list('product_id', flat=True))
+
     context = {
         'products': products,
         'current_category': current_category,
+        'all_power_supplies': ALL_POWER_SUPPLIES,
+        'all_manufacturers': ALL_MANUFACTURERS,
+        'selected_power_supplies': power_supplies,
+        'selected_manufacturers': manufacturers,
+        'wishlist_product_ids': wishlist_product_ids,
     }
 
     if is_htmx(request):

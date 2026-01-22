@@ -12,6 +12,14 @@ from core.utils import is_htmx
 from services.tasks import send_order_created_email
 
 def checkout(request):
+    if not request.user.is_authenticated:
+        login_url = reverse('login') + f'?next={request.path}'
+        if is_htmx(request):
+            response = HttpResponse()
+            response['HX-Redirect'] = login_url
+            return response
+        return redirect(login_url)
+
     cart = CartService.get_cart_from_session(request)
     if not cart.items.exists():
         messages.warning(request, "Your cart is empty.")
@@ -30,6 +38,7 @@ def checkout(request):
                     order.subtotal = cart.total_price
                     order.total = order.subtotal + order.shipping_cost
                     
+                    order.user = request.user
                     # Ensure unique order number generation if not handled by signal/save override safely
                     # The model save method handles it, so allow it.
                     order.save()
@@ -96,6 +105,8 @@ def checkout(request):
 
 def order_confirmation(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
+    if request.user.is_authenticated and order.user != request.user:
+         return HttpResponse("Forbidden", status=403)
     context = {'order': order, 'is_htmx': is_htmx(request)}
     
     if is_htmx(request):

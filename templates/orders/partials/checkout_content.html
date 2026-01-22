@@ -1,22 +1,12 @@
 {% load i18n %}
+{% load currency %}
 
 <!-- OOB Swap to close cart modal if it's open -->
 <div id="cart-modal-container" hx-swap-oob="true"></div>
 
 <div class="container mx-auto px-4 py-8">
     <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-black uppercase mb-8">Checkout</h1>
-
-        {% if messages %}
-        <div class="mb-6 space-y-2">
-            {% for message in messages %}
-            <div
-                class="p-4 {% if message.tags == 'error' %}bg-red-100 text-red-700{% else %}bg-blue-100 text-blue-700{% endif %} rounded">
-                {{ message }}
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
+        <h1 class="text-3xl font-black uppercase mb-8">{% trans "Checkout" %}</h1>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
             <!-- Checkout Form -->
@@ -35,63 +25,64 @@
                            this.postalCode && this.country;
                 }
             }">
-                <h2 class="text-xl font-bold uppercase mb-6 pb-2 border-b border-gray-200">Billing Details</h2>
+                <h2 class="text-xl font-bold uppercase mb-6 pb-2 border-b border-gray-200">{% trans "Billing Details" %}
+                </h2>
 
                 <form method="post" action="{% url 'checkout' %}" class="space-y-4">
                     {% csrf_token %}
 
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-bold uppercase mb-1">First Name *</label>
+                            <label class="block text-xs font-bold uppercase mb-1">{% trans "First Name" %} *</label>
                             <input type="text" name="first_name" x-model="firstName" required
                                 class="w-full bg-white border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:border-orange-500">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold uppercase mb-1">Last Name *</label>
+                            <label class="block text-xs font-bold uppercase mb-1">{% trans "Last Name" %} *</label>
                             <input type="text" name="last_name" x-model="lastName" required
                                 class="w-full bg-white border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:border-orange-500">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold uppercase mb-1">Email Address *</label>
+                        <label class="block text-xs font-bold uppercase mb-1">{% trans "Email Address" %} *</label>
                         <input type="email" name="email" x-model="email" required
                             class="w-full bg-white border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:border-orange-500">
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold uppercase mb-1">Phone *</label>
+                        <label class="block text-xs font-bold uppercase mb-1">{% trans "Phone" %} *</label>
                         <input type="text" name="phone" x-model="phone" required
                             class="w-full bg-white border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:border-orange-500">
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold uppercase mb-1">Address *</label>
+                        <label class="block text-xs font-bold uppercase mb-1">{% trans "Address" %} *</label>
                         <textarea name="address" x-model="address" required rows="3"
                             class="w-full bg-white border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:border-orange-500"></textarea>
                     </div>
 
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-bold uppercase mb-1">City *</label>
+                            <label class="block text-xs font-bold uppercase mb-1">{% trans "City" %} *</label>
                             <input type="text" name="city" x-model="city" required
                                 class="w-full bg-white border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:border-orange-500">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold uppercase mb-1">Postal Code *</label>
+                            <label class="block text-xs font-bold uppercase mb-1">{% trans "Postal Code" %} *</label>
                             <input type="text" name="postal_code" x-model="postalCode" required
                                 class="w-full bg-white border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:border-orange-500">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold uppercase mb-1">Country *</label>
+                        <label class="block text-xs font-bold uppercase mb-1">{% trans "Country" %} *</label>
                         <input type="text" name="country" x-model="country" required
                             class="w-full bg-white border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:border-orange-500">
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold uppercase mb-1">Order Notes</label>
+                        <label class="block text-xs font-bold uppercase mb-1">{% trans "Order Notes" %}</label>
                         <textarea name="notes" rows="2"
                             class="w-full bg-white border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:border-orange-500"></textarea>
                     </div>
@@ -101,10 +92,10 @@
                         <button type="submit" :disabled="!isFormValid()"
                             :class="{'opacity-50 cursor-not-allowed': !isFormValid(), 'hover:bg-orange-700': isFormValid()}"
                             class="w-full bg-orange-600 text-white font-black uppercase tracking-widest py-4 transition-all">
-                            Proceed to Payment
+                            {% trans "Proceed to Payment" %}
                         </button>
                         <p class="text-[10px] text-gray-500 mt-2 text-center">
-                            By proceeding, you will be redirected to our secure payment partner.
+                            {% trans "By proceeding, you will be redirected to our secure payment partner." %}
                         </p>
                     </div>
                 </form>
@@ -112,30 +103,30 @@
 
             <!-- Order Summary -->
             <div>
-                <h2 class="text-xl font-bold uppercase mb-6 pb-2 border-b border-gray-200">Your Order</h2>
+                <h2 class="text-xl font-bold uppercase mb-6 pb-2 border-b border-gray-200">{% trans "Your Order" %}</h2>
                 <div class="bg-gray-50 p-6 space-y-4">
                     {% for item in cart.items.all %}
                     <div class="flex justify-between items-start text-sm">
                         <div>
                             <span class="font-bold">{{ item.product.name }}</span>
-                            <div class="text-xs text-gray-500">Qty: {{ item.quantity }}</div>
+                            <div class="text-xs text-gray-500">{% trans "Qty" %}: {{ item.quantity }}</div>
                         </div>
-                        <div class="font-bold">{{ item.total_price }} €</div>
+                        <div class="font-bold">{{ item.total_price|currency:request }}</div>
                     </div>
                     {% endfor %}
 
                     <div class="border-t border-gray-200 pt-4 space-y-2 text-sm">
                         <div class="flex justify-between">
-                            <span>Subtotal</span>
-                            <span>{{ cart.total_price }} €</span>
+                            <span>{% trans "Subtotal" %}</span>
+                            <span>{{ cart.total_price|currency:request }}</span>
                         </div>
                         <div class="flex justify-between">
-                            <span>Shipping</span>
-                            <span>0.00 €</span>
+                            <span>{% trans "Shipping" %}</span>
+                            <span>{{ 0|currency:request }}</span>
                         </div>
                         <div class="flex justify-between font-black text-lg pt-2 border-t border-gray-200">
-                            <span>Total</span>
-                            <span>{{ cart.total_price }} €</span>
+                            <span>{% trans "Total" %}</span>
+                            <span>{{ cart.total_price|currency:request }}</span>
                         </div>
                     </div>
                 </div>

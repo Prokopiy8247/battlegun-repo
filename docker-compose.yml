@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   web:
     build: .
@@ -6,13 +8,11 @@ services:
       - .:/app
       - static_volume:/app/staticfiles
       - media_volume:/app/media
-    expose:
-      - 8000
+    env_file:
+      - .env
     depends_on:
       - db
       - redis
-    env_file:
-      - .env
     networks:
       - internal
 
@@ -28,8 +28,7 @@ services:
       - internal
 
   redis:
-    image: redis:7.0-alpine
-    restart: on-failure
+    image: redis:7
     networks:
       - internal
 
@@ -38,7 +37,6 @@ services:
     command: celery -A config worker -l info
     volumes:
       - .:/app
-      - media_volume:/app/media
     env_file:
       - .env
     depends_on:
@@ -48,30 +46,28 @@ services:
       - internal
 
   nginx:
-    image: nginx:1.25-alpine
-    ports:
-      - 80:80
-      - 443:443
+    image: nginx:1.25
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - static_volume:/app/staticfiles
       - media_volume:/app/media
-      - /etc/letsencrypt/live/battlegun.shop/fullchain.pem:/etc/letsencrypt/live/battlegun.shop/fullchain.pem:ro
-      - /etc/letsencrypt/live/battlegun.shop/privkey.pem:/etc/letsencrypt/live/battlegun.shop/privkey.pem:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    ports:
+      - "80:80"
+      - "443:443"
     depends_on:
       - web
     networks:
       - internal
       - public
 
-volumes:
-  postgres_data:
-  static_volume:
-  media_volume:
-
-
 networks:
   internal:
     driver: bridge
   public:
     driver: bridge
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:

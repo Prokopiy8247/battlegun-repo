@@ -3,7 +3,10 @@ from django.db import models
 from core.models import TimeStampedModel
 from apps.catalog.models import Product
 
+from django.conf import settings
+
 class Order(TimeStampedModel):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
     STATUS_CHOICES = [
         ('pending', 'Pending'),
         ('paid', 'Paid'),
@@ -38,13 +41,13 @@ class Order(TimeStampedModel):
         if not self.order_number:
             # Simple order number generation strategy
             # In production, use a more robust sequence generator
-            import random
+            import secrets
             import string
             # Try to generate unique ID
             while True:
                 prefix = 'ORD'
                 chars = string.ascii_uppercase + string.digits
-                random_str = ''.join(random.choices(chars, k=8))
+                random_str = ''.join(secrets.choice(chars) for _ in range(8))
                 order_number = f"{prefix}-{random_str}"
                 if not Order.objects.filter(order_number=order_number).exists():
                     self.order_number = order_number
